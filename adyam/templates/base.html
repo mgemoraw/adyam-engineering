@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block title %} Ayam Engineering {% endblock title %}</title>
+    <link rel="stylesheet" href="{%static 'css/index.css'%}"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+    {% block header %}
+    
+    {% endblock header %}
+
+    {% block navbar %}
+
+    {% endblock %}
+    
+    <div id="content">
+        {% block content %} {% endblock content %}
+
+    </div>
+    
+    {% block body %} {% endblock body %}
+
+    {% block footer %} {% endblock footer %}
+      
+
+    <script></script>
+</body>
+</html>

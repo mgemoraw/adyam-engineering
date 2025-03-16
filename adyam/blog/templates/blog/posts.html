@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="posts">
+        <h1><strong>List of Posts</strong></h1>
+        {% for post in posts %}
+        
+            <h1 class="post"><a href="{% url 'blog:detail' post.id %}">{{post.id}} - {{post.title}} </a></h1>
+            <p class="content">{{post.body}}</p>
+            <p class="date">
+                Published {{post.published}} by {{post.author}}
+            </p>
+        {% endfor %}
+    </div>
+{% endblock content %}
