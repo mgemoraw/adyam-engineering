@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load static %}
 
-{% block title %}Adyam Construction - Building Your Vision{% endblock %}
+{% block title %}Adyam Consulting - Strategic Business Solutions{% endblock %}
 
 {% block navbar %}
     {% include 'core/navbar.html' %}
@@ -8,28 +9,28 @@
 
 {% block content %}
 <!-- Hero Section -->
-<div class="relative bg-gray-900 overflow-hidden">
+<div class="relative bg-indigo-900 overflow-hidden">
     <div class="max-w-7xl mx-auto">
-        <div class="relative z-10 pb-8 bg-gray-900 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
-            <div class="pt-10 sm:pt-16 lg:pt-8 lg:pb-14 lg:overflow-hidden">
+        <div class="relative z-10 pb-8 bg-indigo-900 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+            <div class="pt-20 sm:pt-24 lg:pt-8 lg:pb-14 lg:overflow-hidden">
                 <div class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
                     <div class="sm:text-center lg:text-left">
                         <h1 class="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl">
-                            <span class="block">Building Excellence</span>
-                            <span class="block text-yellow-400">Since 1995</span>
+                            <span class="block">Strategic Business</span>
+                            <span class="block text-indigo-300">Consulting Excellence</span>
                         </h1>
-                        <p class="mt-3 text-base text-gray-300 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                            Adyam Construction delivers innovative, sustainable building solutions with uncompromising quality and safety standards.
+                        <p class="mt-3 text-base text-indigo-200 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                            Adyam Consulting delivers innovative, data-driven business solutions to help organizations navigate complexity and drive sustainable growth.
                         </p>
                         <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                             <div class="rounded-md shadow">
-                                <a href="#contact" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-yellow-700 bg-yellow-400 hover:bg-yellow-500 md:py-4 md:text-lg md:px-10">
-                                    Get a Quote
+                                <a href="#contact" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10 transition duration-150">
+                                    Get Started
                                 </a>
                             </div>
                             <div class="mt-3 sm:mt-0 sm:ml-3">
-                                <a href="#projects" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-yellow-400 bg-gray-800 hover:bg-gray-700 md:py-4 md:text-lg md:px-10">
-                                    Our Projects
+                                <a href="#services" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-300 bg-indigo-800 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10 transition duration-150">
+                                    Our Services
                                 </a>
                             </div>
                         </div>
@@ -39,269 +40,350 @@
         </div>
     </div>
     <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-        <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80" alt="Construction site">
+        <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Business team meeting">
     </div>
 </div>
 
 <!-- Services Section -->
-<div id="services" class="py-12 bg-white">
+<div id="services" class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="lg:text-center">
-            <h2 class="text-base text-yellow-600 font-semibold tracking-wide uppercase">Services</h2>
+            <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Services</h2>
             <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                Comprehensive Construction Solutions
+                Expert Consulting Services
             </p>
             <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-                From concept to completion, we handle every aspect of your construction project.
+                We provide strategic guidance tailored to your unique business challenges.
             </p>
         </div>
 
-        <div class="mt-10">
-            <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
-                <div class="group relative bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-yellow-500 rounded-lg shadow-lg">
-                    <div>
-                        <span class="rounded-lg inline-flex p-3 bg-yellow-50 text-yellow-700 ring-4 ring-white">
-                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                            </svg>
-                        </span>
+        <div class="mt-12">
+            <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="group relative bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="absolute -top-6 left-6 w-14 h-14 rounded-lg flex items-center justify-center bg-indigo-100 text-indigo-600">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                        </svg>
                     </div>
                     <div class="mt-8">
-                        <h3 class="text-lg font-medium">
-                            <a href="#" class="focus:outline-none">
-                                <span class="absolute inset-0" aria-hidden="true"></span>
-                                Commercial Construction
-                            </a>
+                        <h3 class="text-lg font-semibold text-gray-900">
+                            Strategic Planning
                         </h3>
-                        <p class="mt-2 text-sm text-gray-500">
-                            Office buildings, retail spaces, and commercial complexes built to exacting standards.
+                        <p class="mt-4 text-base text-gray-600">
+                            Comprehensive business strategy development to position your organization for long-term success in evolving markets.
                         </p>
                     </div>
-                    <span class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-yellow-400" aria-hidden="true">
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M20 4h1a1 1 0 00-1-1v1zm-1 12a1 1 0 002 0h-2zM8 3a1 1 0 000 2V3zM3.293 19.293a1 1 0 101.414 1.414l-1.414-1.414zM19 4v12h2V4h-2zm1-1H8v2h12V3zm-.707.293l-16 16 1.414 1.414 16-16-1.414-1.414z" />
-                        </svg>
-                    </span>
+                    <div class="mt-6">
+                        <a href="#" class="text-indigo-600 font-medium hover:text-indigo-500 inline-flex items-center">
+                            Learn more
+                            <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
 
-                <div class="group relative bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-yellow-500 rounded-lg shadow-lg">
-                    <div>
-                        <span class="rounded-lg inline-flex p-3 bg-yellow-50 text-yellow-700 ring-4 ring-white">
-                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                            </svg>
-                        </span>
+                <div class="group relative bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="absolute -top-6 left-6 w-14 h-14 rounded-lg flex items-center justify-center bg-indigo-100 text-indigo-600">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
                     </div>
                     <div class="mt-8">
-                        <h3 class="text-lg font-medium">
-                            <a href="#" class="focus:outline-none">
-                                <span class="absolute inset-0" aria-hidden="true"></span>
-                                Residential Building
-                            </a>
+                        <h3 class="text-lg font-semibold text-gray-900">
+                            Digital Transformation
                         </h3>
-                        <p class="mt-2 text-sm text-gray-500">
-                            Custom homes, apartments, and residential communities with exceptional craftsmanship.
+                        <p class="mt-4 text-base text-gray-600">
+                            End-to-end digital strategy and implementation to modernize operations and enhance customer experiences.
                         </p>
                     </div>
-                    <span class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-yellow-400" aria-hidden="true">
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M20 4h1a1 1 0 00-1-1v1zm-1 12a1 1 0 002 0h-2zM8 3a1 1 0 000 2V3zM3.293 19.293a1 1 0 101.414 1.414l-1.414-1.414zM19 4v12h2V4h-2zm1-1H8v2h12V3zm-.707.293l-16 16 1.414 1.414 16-16-1.414-1.414z" />
-                        </svg>
-                    </span>
+                    <div class="mt-6">
+                        <a href="#" class="text-indigo-600 font-medium hover:text-indigo-500 inline-flex items-center">
+                            Learn more
+                            <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
 
-                <div class="group relative bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-yellow-500 rounded-lg shadow-lg">
-                    <div>
-                        <span class="rounded-lg inline-flex p-3 bg-yellow-50 text-yellow-700 ring-4 ring-white">
-                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                            </svg>
-                        </span>
+                <div class="group relative bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="absolute -top-6 left-6 w-14 h-14 rounded-lg flex items-center justify-center bg-indigo-100 text-indigo-600">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
                     </div>
                     <div class="mt-8">
-                        <h3 class="text-lg font-medium">
-                            <a href="#" class="focus:outline-none">
-                                <span class="absolute inset-0" aria-hidden="true"></span>
-                                Renovation & Remodeling
-                            </a>
+                        <h3 class="text-lg font-semibold text-gray-900">
+                            Financial Advisory
                         </h3>
-                        <p class="mt-2 text-sm text-gray-500">
-                            Transforming existing spaces to meet modern needs while preserving structural integrity.
+                        <p class="mt-4 text-base text-gray-600">
+                            Expert financial analysis, modeling, and strategic planning to optimize your fiscal performance.
                         </p>
                     </div>
-                    <span class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-yellow-400" aria-hidden="true">
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M20 4h1a1 1 0 00-1-1v1zm-1 12a1 1 0 002 0h-2zM8 3a1 1 0 000 2V3zM3.293 19.293a1 1 0 101.414 1.414l-1.414-1.414zM19 4v12h2V4h-2zm1-1H8v2h12V3zm-.707.293l-16 16 1.414 1.414 16-16-1.414-1.414z" />
-                        </svg>
-                    </span>
+                    <div class="mt-6">
+                        <a href="#" class="text-indigo-600 font-medium hover:text-indigo-500 inline-flex items-center">
+                            Learn more
+                            <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
 
-                <div class="group relative bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-yellow-500 rounded-lg shadow-lg">
-                    <div>
-                        <span class="rounded-lg inline-flex p-3 bg-yellow-50 text-yellow-700 ring-4 ring-white">
-                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                            </svg>
-                        </span>
+                <div class="group relative bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="absolute -top-6 left-6 w-14 h-14 rounded-lg flex items-center justify-center bg-indigo-100 text-indigo-600">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
                     </div>
                     <div class="mt-8">
-                        <h3 class="text-lg font-medium">
-                            <a href="#" class="focus:outline-none">
-                                <span class="absolute inset-0" aria-hidden="true"></span>
-                                Project Management
-                            </a>
+                        <h3 class="text-lg font-semibold text-gray-900">
+                            Organizational Development
                         </h3>
-                        <p class="mt-2 text-sm text-gray-500">
-                            Comprehensive oversight from planning through completion, ensuring on-time and on-budget delivery.
+                        <p class="mt-4 text-base text-gray-600">
+                            Transform your workforce strategy and corporate culture to align with business objectives.
                         </p>
                     </div>
-                    <span class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-yellow-400" aria-hidden="true">
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M20 4h1a1 1 0 00-1-1v1zm-1 12a1 1 0 002 0h-2zM8 3a1 1 0 000 2V3zM3.293 19.293a1 1 0 101.414 1.414l-1.414-1.414zM19 4v12h2V4h-2zm1-1H8v2h12V3zm-.707.293l-16 16 1.414 1.414 16-16-1.414-1.414z" />
+                    <div class="mt-6">
+                        <a href="#" class="text-indigo-600 font-medium hover:text-indigo-500 inline-flex items-center">
+                            Learn more
+                            <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="group relative bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="absolute -top-6 left-6 w-14 h-14 rounded-lg flex items-center justify-center bg-indigo-100 text-indigo-600">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                         </svg>
-                    </span>
+                    </div>
+                    <div class="mt-8">
+                        <h3 class="text-lg font-semibold text-gray-900">
+                            Risk Management
+                        </h3>
+                        <p class="mt-4 text-base text-gray-600">
+                            Comprehensive risk assessment and mitigation strategies to protect your business interests.
+                        </p>
+                    </div>
+                    <div class="mt-6">
+                        <a href="#" class="text-indigo-600 font-medium hover:text-indigo-500 inline-flex items-center">
+                            Learn more
+                            <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="group relative bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="absolute -top-6 left-6 w-14 h-14 rounded-lg flex items-center justify-center bg-indigo-100 text-indigo-600">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                    </div>
+                    <div class="mt-8">
+                        <h3 class="text-lg font-semibold text-gray-900">
+                            Market Expansion
+                        </h3>
+                        <p class="mt-4 text-base text-gray-600">
+                            Data-driven market analysis and entry strategies to grow your business in new regions or sectors.
+                        </p>
+                    </div>
+                    <div class="mt-6">
+                        <a href="#" class="text-indigo-600 font-medium hover:text-indigo-500 inline-flex items-center">
+                            Learn more
+                            <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Featured Projects -->
-<div id="projects" class="bg-gray-50 py-12">
+<!-- Approach Section -->
+<div class="bg-indigo-50 py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="lg:text-center">
-            <h2 class="text-base text-yellow-600 font-semibold tracking-wide uppercase">Our Work</h2>
+            <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Our Approach</h2>
             <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                Featured Projects
+                How We Deliver Results
+            </p>
+        </div>
+
+        <div class="mt-10">
+            <div class="space-y-10 md:space-y-0 md:grid md:grid-cols-3 md:gap-x-8 md:gap-y-10">
+                <div class="relative">
+                    <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                        </svg>
+                    </div>
+                    <div class="ml-16">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900">Discovery & Analysis</h3>
+                        <p class="mt-2 text-base text-gray-600">
+                            We begin with deep research to understand your business context, challenges, and opportunities.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                        </svg>
+                    </div>
+                    <div class="ml-16">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900">Strategic Planning</h3>
+                        <p class="mt-2 text-base text-gray-600">
+                            We develop customized strategies with clear roadmaps for implementation and measurable outcomes.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <div class="ml-16">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900">Implementation Support</h3>
+                        <p class="mt-2 text-base text-gray-600">
+                            We provide hands-on guidance to ensure successful execution of recommended strategies.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Case Studies Section -->
+<div id="case-studies" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="lg:text-center">
+            <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Success Stories</h2>
+            <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                Client Case Studies
             </p>
             <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-                See how we've transformed visions into reality for our clients.
+                See how we've helped organizations like yours achieve transformative results.
             </p>
         </div>
 
         <div class="mt-10 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3">
-            <!-- Project 1 -->
-            <div class="group relative">
-                <div class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
-                    <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80" alt="Office building project" class="w-full h-full object-center object-cover lg:w-full lg:h-full">
+            <div class="group relative bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+                <div class="h-48 bg-indigo-200 overflow-hidden">
+                    <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Financial services case study">
                 </div>
-                <div class="mt-4 flex justify-between">
-                    <div>
-                        <h3 class="text-sm text-gray-700">
-                            <a href="#">
-                                <span aria-hidden="true" class="absolute inset-0"></span>
-                                Downtown Office Tower
-                            </a>
-                        </h3>
-                        <p class="mt-1 text-sm text-gray-500">Commercial Construction</p>
+                <div class="p-6">
+                    <h3 class="text-lg font-medium text-gray-900">
+                        <a href="#">
+                            <span aria-hidden="true" class="absolute inset-0"></span>
+                            Financial Services Transformation
+                        </a>
+                    </h3>
+                    <p class="mt-2 text-sm text-gray-600">
+                        Helped a regional bank streamline operations and improve customer experience through digital transformation.
+                    </p>
+                    <div class="mt-4 flex items-center">
+                        <div class="flex-shrink-0">
+                            <span class="sr-only">Client logo</span>
+                            <div class="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold">FS</div>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm font-medium text-gray-900">Fortune 500 Financial Institution</p>
+                            <p class="text-sm text-gray-500">45% efficiency gain</p>
+                        </div>
                     </div>
-                    <p class="text-sm font-medium text-yellow-600">Completed 2022</p>
                 </div>
             </div>
 
-            <!-- Project 2 -->
-            <div class="group relative">
-                <div class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
-                    <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80" alt="Residential project" class="w-full h-full object-center object-cover lg:w-full lg:h-full">
+            <div class="group relative bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+                <div class="h-48 bg-indigo-200 overflow-hidden">
+                    <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Retail case study">
                 </div>
-                <div class="mt-4 flex justify-between">
-                    <div>
-                        <h3 class="text-sm text-gray-700">
-                            <a href="#">
-                                <span aria-hidden="true" class="absolute inset-0"></span>
-                                Lakeside Residential Community
-                            </a>
-                        </h3>
-                        <p class="mt-1 text-sm text-gray-500">Residential Construction</p>
+                <div class="p-6">
+                    <h3 class="text-lg font-medium text-gray-900">
+                        <a href="#">
+                            <span aria-hidden="true" class="absolute inset-0"></span>
+                            Retail Market Expansion
+                        </a>
+                    </h3>
+                    <p class="mt-2 text-sm text-gray-600">
+                        Guided a retail chain through successful international expansion into three new markets.
+                    </p>
+                    <div class="mt-4 flex items-center">
+                        <div class="flex-shrink-0">
+                            <span class="sr-only">Client logo</span>
+                            <div class="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold">RC</div>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm font-medium text-gray-900">National Retail Chain</p>
+                            <p class="text-sm text-gray-500">$120M in new revenue</p>
+                        </div>
                     </div>
-                    <p class="text-sm font-medium text-yellow-600">Completed 2021</p>
                 </div>
             </div>
 
-            <!-- Project 3 -->
-            <div class="group relative">
-                <div class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
-                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80" alt="Modern home project" class="w-full h-full object-center object-cover lg:w-full lg:h-full">
+            <div class="group relative bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+                <div class="h-48 bg-indigo-200 overflow-hidden">
+                    <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Healthcare case study">
                 </div>
-                <div class="mt-4 flex justify-between">
-                    <div>
-                        <h3 class="text-sm text-gray-700">
-                            <a href="#">
-                                <span aria-hidden="true" class="absolute inset-0"></span>
-                                Modern Luxury Villa
-                            </a>
-                        </h3>
-                        <p class="mt-1 text-sm text-gray-500">Custom Home</p>
+                <div class="p-6">
+                    <h3 class="text-lg font-medium text-gray-900">
+                        <a href="#">
+                            <span aria-hidden="true" class="absolute inset-0"></span>
+                            Healthcare System Optimization
+                        </a>
+                    </h3>
+                    <p class="mt-2 text-sm text-gray-600">
+                        Redesigned operational workflows for a hospital network, reducing costs while improving patient care.
+                    </p>
+                    <div class="mt-4 flex items-center">
+                        <div class="flex-shrink-0">
+                            <span class="sr-only">Client logo</span>
+                            <div class="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold">HC</div>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm font-medium text-gray-900">Regional Healthcare Provider</p>
+                            <p class="text-sm text-gray-500">30% cost reduction</p>
+                        </div>
                     </div>
-                    <p class="text-sm font-medium text-yellow-600">Completed 2023</p>
                 </div>
             </div>
         </div>
 
         <div class="mt-10 text-center">
-            <a href="#" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500">
-                View All Projects
+            <a href="#" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150">
+                View All Case Studies
                 <svg class="ml-2 -mr-1 w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                 </svg>
             </a>
         </div>
     </div>
 </div>
 
-<!-- Stats Section -->
-<div class="bg-yellow-600">
-    <div class="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8 lg:py-20">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
-                Trusted by clients across the region
-            </h2>
-            <p class="mt-3 text-xl text-yellow-100 sm:mt-4">
-                Our track record speaks for itself with hundreds of satisfied clients and successful projects.
-            </p>
-        </div>
-        <div class="mt-10 text-center sm:max-w-3xl sm:mx-auto sm:grid sm:grid-cols-3 sm:gap-8">
-            <div>
-                <p class="text-5xl font-extrabold text-white">
-                    200+
-                </p>
-                <p class="mt-2 text-base font-medium text-yellow-100">
-                    Projects Completed
-                </p>
-            </div>
-            <div class="mt-10 sm:mt-0">
-                <p class="text-5xl font-extrabold text-white">
-                    25
-                </p>
-                <p class="mt-2 text-base font-medium text-yellow-100">
-                    Years Experience
-                </p>
-            </div>
-            <div class="mt-10 sm:mt-0">
-                <p class="text-5xl font-extrabold text-white">
-                    100%
-                </p>
-                <p class="mt-2 text-base font-medium text-yellow-100">
-                    Client Satisfaction
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- Testimonials -->
-<div class="bg-white py-12">
+<div class="bg-gray-50 py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="lg:text-center">
-            <h2 class="text-base text-yellow-600 font-semibold tracking-wide uppercase">Testimonials</h2>
+            <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Testimonials</h2>
             <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
                 What Our Clients Say
             </p>
         </div>
 
-        <div class="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            <!-- Testimonial 1 -->
-            <div class="bg-gray-50 p-6 rounded-lg shadow">
+        <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div class="bg-white p-8 rounded-lg shadow-md">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
                         <img class="h-12 w-12 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Sarah Johnson">
@@ -313,30 +395,20 @@
                 </div>
                 <div class="mt-4">
                     <p class="text-gray-600">
-                        "Adyam Construction delivered our new headquarters on time and under budget. Their attention to detail and proactive communication made the entire process seamless."
+                        "Adyam's strategic guidance helped us pivot our business model at a critical time. Their insights were invaluable in navigating market changes and positioning us for growth."
                     </p>
                 </div>
                 <div class="mt-4 flex">
+                    {# Repeat 5 times for 5-star rating #}
+                    {% for _ in "12345" %}
                     <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                     </svg>
-                    <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                    <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                    <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                    <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
+                    {% endfor %}
                 </div>
             </div>
 
-            <!-- Testimonial 2 -->
-            <div class="bg-gray-50 p-6 rounded-lg shadow">
+            <div class="bg-white p-8 rounded-lg shadow-md">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
                         <img class="h-12 w-12 rounded-full" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Michael Rodriguez">
@@ -348,60 +420,39 @@
                 </div>
                 <div class="mt-4">
                     <p class="text-gray-600">
-                        "The residential community Adyam built for us exceeded all expectations. Their team was professional, skilled, and truly understood our vision."
+                        "The operational efficiency improvements recommended by Adyam resulted in $2M annual savings for our organization. Their team combines deep expertise with practical implementation knowledge."
                     </p>
                 </div>
                 <div class="mt-4 flex">
+                    {% for _ in "12345" %}
                     <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                     </svg>
-                    <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                    <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                    <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                    <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
+                    {% endfor %}
                 </div>
             </div>
 
-            <!-- Testimonial 3 -->
-            <div class="bg-gray-50 p-6 rounded-lg shadow">
+            <div class="bg-white p-8 rounded-lg shadow-md">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
                         <img class="h-12 w-12 rounded-full" src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Jennifer Lee">
                     </div>
                     <div class="ml-4">
                         <h3 class="text-lg font-medium text-gray-900">Jennifer Lee</h3>
-                        <p class="text-gray-500">Homeowner</p>
+                        <p class="text-gray-500">CFO, HealthPlus</p>
                     </div>
                 </div>
                 <div class="mt-4">
                     <p class="text-gray-600">
-                        "Building our dream home with Adyam was a wonderful experience. They listened to our needs, offered creative solutions, and delivered exceptional quality."
+                        "Adyam's consultants became true partners in our digital transformation journey. They didn't just provide recommendations - they rolled up their sleeves and helped us implement."
                     </p>
                 </div>
                 <div class="mt-4 flex">
+                    {% for _ in "12345" %}
                     <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                     </svg>
-                    <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                    <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                    <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                    <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -409,20 +460,20 @@
 </div>
 
 <!-- CTA Section -->
-<div id="contact" class="bg-gray-50">
+<div id="contact" class="bg-indigo-700">
     <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
-        <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-            <span class="block">Ready to start your project?</span>
-            <span class="block text-yellow-600">Get in touch today.</span>
+        <h2 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+            <span class="block">Ready to transform your business?</span>
+            <span class="block text-indigo-200">Contact our experts today.</span>
         </h2>
         <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
             <div class="inline-flex rounded-md shadow">
-                <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700">
-                    Contact Us
+                <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50 transition duration-150">
+                    Get in Touch
                 </a>
             </div>
             <div class="ml-3 inline-flex rounded-md shadow">
-                <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-yellow-600 bg-white hover:bg-gray-50">
+                <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 bg-opacity-60 hover:bg-opacity-70 transition duration-150">
                     Learn more
                 </a>
             </div>
