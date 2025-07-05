@@ -1,0 +1,48 @@
+<!-- Modal Component -->
+<div x-data="{ open: false }" x-cloak>
+  <!-- Trigger Button -->
+  <button @click="open = true" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+    {{ button_text|default:"Open Modal" }}
+  </button>
+
+  <!-- Modal Overlay -->
+  <div x-show="open" @keydown.escape.window="open = false" class="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1"
+       x-transition:enter="transition ease-out duration-300"
+       x-transition:enter-start="opacity-0"
+       x-transition:enter-end="opacity-100"
+       x-transition:leave="transition ease-in duration-200"
+       x-transition:leave-start="opacity-100"
+       x-transition:leave-end="opacity-0">
+
+    <!-- Modal Box -->
+    <div @click.outside="open = false" class="bg-white rounded-lg shadow-lg w-full max-w-lg p-6 relative transform transition-all"
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0 scale-95"
+         x-transition:enter-end="opacity-100 scale-100"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100 scale-100"
+         x-transition:leave-end="opacity-0 scale-95">
+
+      <!-- Modal Header -->
+      <div class="flex justify-between items-center mb-4">
+        <h2 id="modal-title" class="text-xl font-semibold">{{ title|default:"Modal Title" }}</h2>
+        <button @click="open = false" class="text-gray-400 hover:text-gray-600 text-xl font-bold">&times;</button>
+      </div>
+
+      <!-- Modal Content Slot -->
+      <div class="modal-body">
+        {% block modal_content %}
+          <p class="text-gray-600">Insert content here.</p>
+        {% endblock %}
+      </div>
+
+      <!-- Modal Footer -->
+      {% if show_footer %}
+      <div class="flex justify-end space-x-3 mt-6">
+        <button @click="open = false" class="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400">Cancel</button>
+        <button type="submit" form="{{ form_id }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Save</button>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

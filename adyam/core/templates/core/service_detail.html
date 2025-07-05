@@ -1,0 +1,187 @@
+{% extends 'core/home.html' %}
+{% load static %}
+{% block content %}
+  <section class="relative bg-cover bg-center bg-no-repeat text-white py-40"
+     style="background-image: url('{% static 'images/banner-training.jpg' %}'); background-size: cover; background-position: center;"
+    >
+
+    <!-- Optional overlay for readability -->
+  <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+
+
+    <div class="relative container mx-auto px-4 text-center ">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 ">Welcome to Adyam Engineering</h1>
+      <p class="text-xl mb-8 max-w-2xl mx-auto ">Engineering Excellence in Every Build </p>
+        
+      <a href="{% url 'core:services' %}" class="inline-block bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">Explore Our Services and Projects</a>
+        
+    </div>
+  </section>
+
+  {% comment %} – Your Trusted Partner in Design and Development {% endcomment %}
+  {% comment %} Service details  {% endcomment %}
+  <section id="services" class="py-16 bg-white">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <!-- <h2 class="text-3xl font-bold text-center text-secondary mb-3">Our Core Engineering Services</h2> -->
+      <h2 class="text-3xl font-bold text-center text-secondary mb-12">{{service.title}} Service</h2>
+
+      {% if service %}
+        <div class="bg-white rounded-lg shadow-xl overflow-hidden p-8 mb-8">
+          <h3 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-4">{{ service.title }}</h3>
+
+          {% if service.image %}
+            <div class="mb-6">
+              <img src="{{ service.image.url }}" alt="{{ service.title }}" class="w-full h-auto max-h-96 object-cover rounded-lg shadow-md">
+            </div>
+          {% endif %}
+
+          <div class="text-gray-700 leading-relaxed text-lg">
+            <p class="mb-4">{{ service.description }}</p>
+            {% if service.long_description %}
+              <div class="mt-6 border-t pt-4">
+                <h4 class="text-xl font-semibold text-gray-800 mb-3">Detailed Overview:</h4>
+                <p>{{ service.long_description|safe }}</p> {# Use |safe if it's rich text/HTML #}
+              </div>
+            {% endif %}
+          </div>
+
+          <div class="mt-8 text-center">
+            <a href="{% url 'core:contact-us' %}" class="inline-block bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-secondary transition duration-300">Inquire About This Service</a>
+          </div>
+        </div>
+
+      {% else %}
+        <p class="text-gray-600 text-center text-lg mb-8">Adyam Engineering offers a comprehensive suite of consulting services tailored to meet the diverse needs of modern construction and infrastructure projects.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {# Example of how you might loop through multiple services if available, assuming 'services' is passed #}
+          {% comment %}
+          {% for svc in services %}
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+              {% if svc.image %}
+                <img src="{{ svc.image.url }}" alt="{{ svc.title }}" class="w-full h-48 object-cover">
+              {% endif %}
+              <div class="p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-3">{{ svc.title }}</h3>
+                <p class="text-gray-600 mb-4 line-clamp-3">{{ svc.description }}</p>
+                <a href="{% url 'core:service-detail' svc.id %}" class="text-primary hover:text-secondary font-medium">Learn More &rarr;</a>
+              </div>
+            </div>
+          {% endfor %}
+          {% endcomment %}
+
+          <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <div class="relative">
+              <img src="https://via.placeholder.com/600x400?text=Building+Design" alt="Building Design Consultancy" class="w-full h-48 object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50"></div>
+              <h3 class="absolute bottom-4 left-4 text-2xl font-bold text-white">Building Design Consultancy</h3>
+            </div>
+            <div class="p-6">
+              <p class="text-gray-700 mb-4">
+                At Adyam Engineering, our Building Design Consultancy service focuses on creating innovative, sustainable, and functional structures. We integrate cutting-edge design principles with practical engineering solutions to bring your vision to life.
+              </p>
+              <ul class="list-disc list-inside text-gray-600 mb-4">
+                <li>Architectural & Structural Design</li>
+                <li>MEP (Mechanical, Electrical, Plumbing) Design</li>
+                <li>Feasibility Studies & Site Analysis</li>
+                <li>Sustainable & Green Building Solutions</li>
+                <li>Permitting & Regulatory Compliance</li>
+              </ul>
+              <p class="text-gray-600 text-sm italic">
+                Note: Our expert team leverages advanced BIM technologies and adheres to international building codes, ensuring precision, efficiency, and safety from conceptualization to completion.
+              </p>
+              <div class="mt-6 text-center">
+                <a href="{% url 'core:service-detail' 1 %}" class="inline-block bg-primary text-white px-6 py-2 rounded-lg font-semibold hover:bg-secondary transition duration-300">Discover Our Design Process</a>
+                {# Replace '1' with the actual ID of your Building Design service if it exists in your database #}
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <div class="relative">
+              <img src="https://via.placeholder.com/600x400?text=Infrastructure+Development" alt="Infrastructure Development" class="w-full h-48 object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50"></div>
+              <h3 class="absolute bottom-4 left-4 text-2xl font-bold text-white">Infrastructure Development</h3>
+            </div>
+            <div class="p-6">
+              <p class="text-gray-700 mb-4">
+                We provide comprehensive consulting for large-scale infrastructure projects, including roads, bridges, water supply systems, and urban planning. Our solutions are designed for longevity and community benefit.
+              </p>
+              <ul class="list-disc list-inside text-gray-600 mb-4">
+                <li>Road & Bridge Engineering</li>
+                <li>Water Resource Management</li>
+                <li>Urban & Regional Planning</li>
+                <li>Environmental Impact Assessments</li>
+              </ul>
+              <p class="text-gray-600 text-sm italic">
+                Note: Our team ensures that all infrastructure projects are economically viable, environmentally sound, and socially responsible.
+              </p>
+              <div class="mt-6 text-center">
+                <a href="{% url 'core:service-detail' 2 %}" class="inline-block bg-primary text-white px-6 py-2 rounded-lg font-semibold hover:bg-secondary transition duration-300">Learn More</a>
+                 {# Replace '2' with the actual ID of your Infrastructure Development service #}
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <div class="relative">
+              <img src="https://via.placeholder.com/600x400?text=Project+Management" alt="Project Management & Supervision" class="w-full h-48 object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50"></div>
+              <h3 class="absolute bottom-4 left-4 text-2xl font-bold text-white">Project Management & Supervision</h3>
+            </div>
+            <div class="p-6">
+              <p class="text-gray-700 mb-4">
+                From concept to completion, we offer rigorous project management and site supervision services to ensure your projects are delivered on time, within budget, and to the highest quality standards.
+              </p>
+              <ul class="list-disc list-inside text-gray-600 mb-4">
+                <li>Construction Supervision</li>
+                <li>Quality Assurance & Control</li>
+                <li>Risk Management</li>
+                <li>Cost Control & Budgeting</li>
+              </ul>
+              <p class="text-gray-600 text-sm italic">
+                Note: Our proactive approach minimizes potential delays and cost overruns, providing you with peace of mind.
+              </p>
+              <div class="mt-6 text-center">
+                <a href="{% url 'core:service-detail' 3 %}" class="inline-block bg-primary text-white px-6 py-2 rounded-lg font-semibold hover:bg-secondary transition duration-300">View Our Expertise</a>
+                 {# Replace '3' with the actual ID of your Project Management service #}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </section>
+
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-6xl text-center">
+      <h2 class="text-3xl font-bold text-secondary mb-12">Why Choose Adyam Engineering?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="text-4xl text-primary mb-4">🚀</div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Innovation & Expertise</h3>
+          <p class="text-gray-600">Leveraging cutting-edge technologies and deep industry knowledge to deliver optimal solutions.</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="text-4xl text-primary mb-4">🌍</div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Sustainable Solutions</h3>
+          <p class="text-gray-600">Committed to environmentally responsible practices and long-term viability in every project.</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="text-4xl text-primary mb-4">🤝</div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Client-Centric Approach</h3>
+          <p class="text-gray-600">Your vision is our mission. We collaborate closely to ensure your project goals are met and exceeded.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-primary text-white py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Start Your Next Project?</h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">Connect with Adyam Engineering today for a consultation and discover how we can transform your ideas into reality.</p>
+      <a href="{% url 'core:contact-us' %}" class="inline-block bg-white text-primary px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition duration-300 text-lg">Contact Our Experts</a>
+    </div>
+  </section>
+
+{% endblock %}

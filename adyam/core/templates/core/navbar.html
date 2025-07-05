@@ -1,51 +1,67 @@
-{% load static %}
+<!-- {% load static %} -->
 
-<nav class="fixed w-full top-0 z-50 bg-white shadow-md transition-all duration-300">
+<nav class="fixed w-full top-0 z-50 bg-sky-900 dark:bg-sky-950 text-white shadow-md transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-20 items-center">
             <!-- Logo -->
             <div class="flex-shrink-0 flex items-center">
                 <a href="/" class="flex items-center">
-                    <img class="h-10 w-auto" src="{% static 'images/adyam-logo.png' %}" alt="Adyam Construction">
-                    <span class="ml-3 text-2xl font-bold text-gray-900 hidden md:block">Adyam Engineering</span>
+                    <img class="h-16 w-auto rounded-full shadow-lg" src="{% static 'images/adyam-logo.png' %}" alt="Adyam Engineering">
+                    <span class="ml-3 text-2xl font-bold text-white hidden md:block">Adyam Engineering</span>
                 </a>
             </div>
 
             <!-- Desktop Navigation -->
             <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
-                <a href="/" class="text-gray-900 hover:text-yellow-600 px-3 py-2 text-sm font-medium border-b-2 border-yellow-600">Home</a>
+               
+                <a href="/" class="text-white hover:bg-sky-800 px-3 py-2 text-sm font-medium {% if request.path == '/' %}border-b-2 border-sky-300{% endif %}">Home</a>
+                
+                <a href="{%url 'core:services' %}" class="text-white hover:bg-sky-800 px-3 py-2 text-sm font-medium {% if request.path == '/services/' %}border-b-2 border-sky-300{% endif %}">Services</a>
+                
+                {% comment %}
                 
                 <!-- Services Dropdown -->
                 <div class="relative group">
-                    <button class="text-gray-900 hover:text-yellow-600 px-3 py-2 text-sm font-medium flex items-center">
+                    <button class="text-white hover:text-sky-300 px-3 py-2 text-sm font-medium flex items-center">
                         Services
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </button>
-                    <div class="absolute z-10 left-0 mt-2 w-56 origin-top-left rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                    <div class="absolute z-10 left-0 mt-2 w-56 origin-top-left rounded-md shadow-lg bg-sky-900 ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
                         <div class="py-1">
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-yellow-600">Commercial Construction</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-yellow-600">Residential Building</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-yellow-600">Renovation & Remodeling</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-yellow-600">Project Management</a>
+                            <!-- dynamic links for services -->
+                            {% for service in services %}
+                            <a href="{% url 'core:service-detail' service.id %}" class="block px-4 py-2 text-sm text-white hover:bg-sky-800 hover:text-sky-300">{{service.id}}-{{ service.title }} </a>
+                            {% endfor %}
+                           
                         </div>
                     </div>
                 </div>
 
-                <a href="#projects" class="text-gray-900 hover:text-yellow-600 px-3 py-2 text-sm font-medium">Projects</a>
-                <a href="#about" class="text-gray-900 hover:text-yellow-600 px-3 py-2 text-sm font-medium">About Us</a>
-                <a href="#contact" class="text-gray-900 hover:text-yellow-600 px-3 py-2 text-sm font-medium">Contact</a>
+                {% endcomment %}
+
+
+                <a href="#projects" class="text-white hover:bg-sky-800 px-3 py-2 text-sm font-medium{% if request.path == '/projects/' %}border-b-2 border-sky-300{% endif %}">Projects</a>
+                <a href="#vacancies" class="text-white hover:bg-sky-800 px-3 py-2 text-sm font-medium {% if request.path == '/vacancy/' %}border-b-2 border-sky-300{% endif %}">Vacancy</a>
                 
                 <!-- CTA Button -->
-                <a href="#contact" class="ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-yellow-600 hover:bg-yellow-700 transition-colors duration-300">
-                    Get a Quote
+                <a href="{%url 'core:about' %}" class="block px-3 py-2  text-base font-medium text-white hover:bg-sky-800 {% if request.path == '/about/' %}border-b-2 border-sky-300{% endif %}">About Us</a>
+
+                {% if user.is_authenticated %}
+                <a href="{%url 'core:user-logout'%}" class="ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-sky-700 hover:bg-sky-800 transition-colors duration-300">
+                    Logout
                 </a>
+                {% else %}
+                <a href="{%url 'core:user-login'%}" class="ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-sky-700 hover:bg-sky-800 transition-colors duration-300">
+                    Login
+                </a>
+                {% endif %}
             </div>
 
             <!-- Mobile menu button -->
             <div class="-mr-2 flex items-center md:hidden">
-                <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-yellow-500" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
+                <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-sky-200 hover:text-white hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
                     <span class="sr-only">Open main menu</span>
                     <!-- Icon when menu is closed -->
                     <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -61,35 +77,34 @@
     </div>
 
     <!-- Mobile menu, show/hide based on menu state -->
-    <div class="hidden md:hidden bg-white shadow-lg" id="mobile-menu">
+    <div class="hidden md:hidden bg-sky-900 text-white shadow-lg" id="mobile-menu">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a href="/" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 bg-gray-100">Home</a>
+            <a href="/" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-sky-800">Home</a>
             
             <!-- Mobile Services Dropdown -->
             <div class="relative">
-                <button class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100 flex justify-between items-center" id="mobile-services-button">
+                <button class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-white hover:bg-sky-800 flex justify-between items-center" id="mobile-services-button">
                     Services
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </button>
                 <div class="hidden pl-4" id="mobile-services-dropdown">
-                    <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-100">Commercial Construction</a>
-                    <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-100">Residential Building</a>
-                    <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-100">Renovation & Remodeling</a>
-                    <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-100">Project Management</a>
+                    {% for service in services %}
+                    <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-sky-800">{{ service.title }}</a>
+                    {% endfor %}
+                    <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-sky-800">Commercial Construction</a>
+                    <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-sky-800">Residential Building</a>
+                    <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-sky-800">Renovation & Remodeling</a>
+                    <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-sky-800">Project Management</a>
                 </div>
             </div>
 
-            <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100">Projects</a>
-            <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100">About Us</a>
-            <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100">Contact</a>
+            <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-sky-800">Projects</a>
+            <a href="{%url 'core:about' %}" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-sky-800">About Us</a>
+            <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-sky-800">Contact</a>
             
-            <div class="pt-4 border-t border-gray-200">
-                <a href="#contact" class="block w-full px-4 py-2 text-center rounded-md shadow text-white bg-yellow-600 hover:bg-yellow-700 text-base font-medium">
-                    Get a Quote
-                </a>
-            </div>
+            
         </div>
     </div>
 </nav>

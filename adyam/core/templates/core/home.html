@@ -1,483 +1,313 @@
-{% extends 'base.html' %}
 {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Adyam Engineering S.C.{% endblock %}</title>
+  <meta name="description" content="MiCon offers professional civil engineering consultancy services including structural design, project management, and site supervision.">
+  <meta name="author" content="MiCon Consultants">
+  <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
 
-{% block title %}Adyam Consulting - Strategic Business Solutions{% endblock %}
+  <!-- Tailwind CSS for production -->
+  {% comment %} <link rel="stylesheet" href="{% static 'css/tailwind.min.css' %}" type="text/css">  {% endcomment %}
+  <link href="{% static 'css/tailwind.min.css' %}" rel="stylesheet">
 
-{% block navbar %}
+
+  <!-- Tailwind CSS via CDN (for development) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#721616',
+            secondary: '#1a365d',
+          },
+          fontFamily: {
+            inter: ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  
+  <!-- Inter Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  {% block extra_head %}{% endblock %}
+</head>
+<body class="font-inter bg-gray-50">
+  {% block navbar %}
     {% include 'core/navbar.html' %}
-{% endblock navbar %}
+  {% endblock %}
 
-{% block content %}
-<!-- Hero Section -->
-<div class="relative bg-indigo-900 overflow-hidden">
-    <div class="max-w-7xl mx-auto">
-        <div class="relative z-10 pb-8 bg-indigo-900 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
-            <div class="pt-20 sm:pt-24 lg:pt-8 lg:pb-14 lg:overflow-hidden">
-                <div class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
-                    <div class="sm:text-center lg:text-left">
-                        <h1 class="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl">
-                            <span class="block">Strategic Business</span>
-                            <span class="block text-indigo-300">Consulting Excellence</span>
-                        </h1>
-                        <p class="mt-3 text-base text-indigo-200 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                            Adyam Consulting delivers innovative, data-driven business solutions to help organizations navigate complexity and drive sustainable growth.
-                        </p>
-                        <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-                            <div class="rounded-md shadow">
-                                <a href="#contact" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10 transition duration-150">
-                                    Get Started
-                                </a>
-                            </div>
-                            <div class="mt-3 sm:mt-0 sm:ml-3">
-                                <a href="#services" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-300 bg-indigo-800 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10 transition duration-150">
-                                    Our Services
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  {% block content %}
+ 
+
+  {% block hero %}
+    <!-- Hero Section -->
+    {% include "core/hero_slider.html" %}
+  {% endblock hero%}
+
+  <main>
+
+   
+  
+     <!-- Slider Section -->
+    <section class=" py-10 bg-white" id="news">
+
+      <div class="container mx-auto px-4 max-w-8xl">
+        <!-- Optional overlay for readability -->
+        {% comment %} <div class="absolute inset-0 bg-black bg-opacity-50"></div> {% endcomment %}
+
+        <h2 class="text-3xl font-bold text-center text-secondary mb-10">Latest News & Insights</h2>
+
+        <div class="relative">
+
+          <!-- Slider Wrapper -->
+          <div id="news-slider" class="flex overflow-x-auto space-x-4 pb-4 scrollbar-hide snap-x snap-mandatory scroll-smooth ">
+
+            
+            {% for slider in sliders %}
+              <div class="relative w-[280px] sm:w-[320px] md:w-[360px] flex-shrink-0 snap-center rounded-lg shadow-md group overflow-hidden">
+                {% if slider.image %}
+                  <img src="{{ slider.image.url }}" alt="{{ slider.title }}"
+                      class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300">
+                  <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-3 opacity-50 group-hover:opacity-100 transition-opacity duration-300">
+                    <h3 class="text-base font-semibold">{{ slider.title }}</h3>
+                    <a href="{%url 'core:service-detail' slider.id %}" class="text-sm mt-1 inline-block bg-primary text-white px-3 py-1 rounded hover:bg-red-800 transition duration-300">Read More</a>
+                  </div>
+                {% else %}
+                  <div class="w-full h-100 bg-gray-200"></div>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+
+          <!-- Slider Dots -->
+          <div class="w-md flex justify-center mt-4 space-x-2 rounded-xl" id="slider-dots"></div>
+        </div>
+      </div>
+
+      <style>
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+      </style>
+
+      <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const slider = document.getElementById('news-slider');
+        const dotsContainer = document.getElementById('slider-dots');
+
+        const slideWidth = () => slider?.firstElementChild?.offsetWidth + 16; // 16 = space-x-4
+        const numSlides = slider?.children?.length || 0;
+        const visibleSlides = Math.floor(slider.offsetWidth / slideWidth());
+        const totalDots = Math.max(1, numSlides - visibleSlides + 1);
+
+        // Create dots
+        for (let i = 0; i < totalDots; i++) {
+          const dot = document.createElement('button');
+          dot.className = "w-3 h-3 rounded-full bg-white border-2 border-secondary transition-colors duration-300 focus:outline-none";
+          dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
+          dot.dataset.index = i;
+          dotsContainer.appendChild(dot);
+
+          dot.addEventListener('click', () => {
+            clearInterval(autoSlideInterval); // pause auto-slide on manual click
+            currentIndex = i;
+            scrollToSlide(i);
+            restartAutoSlide();
+          });
+        }
+
+        const dots = dotsContainer.querySelectorAll("button");
+        let currentIndex = 0;
+
+        function scrollToSlide(index) {
+          slider.scrollTo({ left: index * slideWidth(), behavior: 'smooth' });
+          updateDots(index);
+        }
+
+        function updateDots(index) {
+          dots.forEach((dot, idx) => {
+            dot.classList.toggle("bg-secondary", idx === index);
+          });
+        }
+
+        function autoSlide() {
+          currentIndex = (currentIndex + 1) % totalDots;
+          scrollToSlide(currentIndex);
+        }
+
+        // Auto-slide every 10 seconds
+        let autoSlideInterval = setInterval(autoSlide, 10000);
+
+        function restartAutoSlide() {
+          clearInterval(autoSlideInterval);
+          autoSlideInterval = setInterval(autoSlide, 10000);
+        }
+
+        slider.addEventListener("scroll", () => {
+          const index = Math.round(slider.scrollLeft / slideWidth());
+          currentIndex = index;
+          updateDots(index);
+        });
+
+        // Initial dot state
+        updateDots(0);
+      });
+    </script>
+    </section>
+
+
+ 
+
+    <!-- Services Section -->
+    <section class="py-16 bg-gray-50" id="services">
+      <h2 class="text-3xl font-bold text-center text-secondary mb-12">Our Core Services</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        {% for service in services %}
+        
+          <div class="bg-white p-8 rounded-lg shadow-md mb-8 hover:shadow-lg transition-shadow duration-300">
+            
+            <div class="text-primary mb-4">
+              {% if service.image %}
+              <img src="{{ service.image.url }}" alt="{{ service.title }}" width="80">
+              {% endif %}
             </div>
+            <h2 class="text-2xl font-bold text-secondary mb-4">{{ service.title }}</h2>
+
+            <p class="text-gray-600 mb-6">{{ service.description }}</p>
+           
+            {% if service.id %}
+            <a href="{% url 'core:service-detail' service.id %}" class="text-primary font-medium hover:underline">Read More → </a>
+            {% endif %}
+            
+          </div>
+           {% empty %}
+          <p class="text-gray-500 text-center">No services available at the moment.</p>
+        {% endfor %}
+      </div>
+       <!-- class="w-full h-auto rounded-lg mb-4" -->
+        
+    </section>
+
+    <!-- why you choose use -->
+    <section class="py-2 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-6xl text-center">
+      <h2 class="text-3xl font-bold text-secondary mb-12">Why Choose Adyam Engineering?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="text-4xl text-primary mb-4">🚀</div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Innovation & Expertise</h3>
+          <p class="text-gray-600">Leveraging cutting-edge technologies and deep industry knowledge to deliver optimal solutions.</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="text-4xl text-primary mb-4">🌍</div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Sustainable Solutions</h3>
+          <p class="text-gray-600">Committed to environmentally responsible practices and long-term viability in every project.</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="text-4xl text-primary mb-4">🤝</div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Client-Centric Approach</h3>
+          <p class="text-gray-600">Your vision is our mission. We collaborate closely to ensure your project goals are met and exceeded.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-primary text-white py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Start Your Next Project?</h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">Connect with Adyam Engineering today for a consultation and discover how we can transform your ideas into reality.</p>
+      
+      <button
+            type="button"
+            class="inline-block bg-white text-primary px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition duration-300 text-lg"
+            onclick="document.getElementById('contactModal').classList.remove('hidden')"
+        >
+            Contact Our Experts
+        </button>
+    </div>
+
+
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+        <div class="bg-white rounded-lg shadow-lg w-full max-w-lg p-8 relative">
+            <button
+                class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl"
+                onclick="document.getElementById('contactModal').classList.add('hidden')"
+                aria-label="Close"
+            >&times;</button>
+            <h3 class="text-2xl font-bold mb-4 text-primary">Contact Us</h3>
+            <form method="post" action="{% url 'core:contact-us' %}">
+                {% csrf_token %}
+                <div class="mb-4">
+                    <label for="name" class="block text-gray-700 mb-2">Name</label>
+                    <input type="text" id="name" name="name" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+                </div>
+                <div class="mb-4">
+                    <label for="phone" class="block text-gray-700 mb-2">Phone Number</label>
+                    <input type="phone" id="phone" name="phone" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700 mb-2">Email</label>
+                    <input type="email" id="email" name="email" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+                </div>
+                <div class="mb-4">
+                    <label for="message" class="block text-gray-700 mb-2">Message</label>
+                    <textarea id="message" name="message" rows="4" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                </div>
+                <button type="submit" class="bg-primary text-white px-6 py-2 rounded font-semibold hover:bg-secondary transition duration-300">
+                    Send Message
+                </button>
+            </form>
         </div>
     </div>
-    <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-        <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Business team meeting">
+  </section>
+
+    <!-- Our Teams -->
+    <section class="py-16 bg-white" id="team">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <h2 class="text-3xl font-bold text-center text-secondary mb-12">Meet Our Team Members</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          {% for team_member in teams %}
+            <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+              <img src="{{ team_member.image.url }}" alt="{{ team_member.name }}" class="w-full h-48 object-cover rounded-lg mb-4">
+              <h3 class="text-xl font-semibold text-secondary">{{ team_member.name }}</h3>
+              <p class="text-gray-600">{{ team_member.position }}</p>
+              <p class="text-gray-500 mt-2">{{ team_member.bio }}</p>
+            </div>
+          {% empty %}
+            <p class="text-gray-500 text-center">No team members available at the moment.</p>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+  {% if messages %}
+    <div class="mt-8">
+      {% for message in messages %}
+        <p class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4">{{ message }}</p>
+      {% endfor %}
     </div>
-</div>
+  {% endif %}
 
-<!-- Services Section -->
-<div id="services" class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="lg:text-center">
-            <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Services</h2>
-            <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                Expert Consulting Services
-            </p>
-            <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-                We provide strategic guidance tailored to your unique business challenges.
-            </p>
-        </div>
+        
+    
+  </main>
 
-        <div class="mt-12">
-            <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
-                <div class="group relative bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div class="absolute -top-6 left-6 w-14 h-14 rounded-lg flex items-center justify-center bg-indigo-100 text-indigo-600">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
-                        </svg>
-                    </div>
-                    <div class="mt-8">
-                        <h3 class="text-lg font-semibold text-gray-900">
-                            Strategic Planning
-                        </h3>
-                        <p class="mt-4 text-base text-gray-600">
-                            Comprehensive business strategy development to position your organization for long-term success in evolving markets.
-                        </p>
-                    </div>
-                    <div class="mt-6">
-                        <a href="#" class="text-indigo-600 font-medium hover:text-indigo-500 inline-flex items-center">
-                            Learn more
-                            <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
+  {% endblock %}
 
-                <div class="group relative bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div class="absolute -top-6 left-6 w-14 h-14 rounded-lg flex items-center justify-center bg-indigo-100 text-indigo-600">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-                        </svg>
-                    </div>
-                    <div class="mt-8">
-                        <h3 class="text-lg font-semibold text-gray-900">
-                            Digital Transformation
-                        </h3>
-                        <p class="mt-4 text-base text-gray-600">
-                            End-to-end digital strategy and implementation to modernize operations and enhance customer experiences.
-                        </p>
-                    </div>
-                    <div class="mt-6">
-                        <a href="#" class="text-indigo-600 font-medium hover:text-indigo-500 inline-flex items-center">
-                            Learn more
-                            <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
+  {% block footer %}
+    {% include 'core/footer.html' %}
+  {% endblock %}
 
-                <div class="group relative bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div class="absolute -top-6 left-6 w-14 h-14 rounded-lg flex items-center justify-center bg-indigo-100 text-indigo-600">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                    <div class="mt-8">
-                        <h3 class="text-lg font-semibold text-gray-900">
-                            Financial Advisory
-                        </h3>
-                        <p class="mt-4 text-base text-gray-600">
-                            Expert financial analysis, modeling, and strategic planning to optimize your fiscal performance.
-                        </p>
-                    </div>
-                    <div class="mt-6">
-                        <a href="#" class="text-indigo-600 font-medium hover:text-indigo-500 inline-flex items-center">
-                            Learn more
-                            <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
+  <script src="{% static 'js/navbar.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
-                <div class="group relative bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div class="absolute -top-6 left-6 w-14 h-14 rounded-lg flex items-center justify-center bg-indigo-100 text-indigo-600">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                        </svg>
-                    </div>
-                    <div class="mt-8">
-                        <h3 class="text-lg font-semibold text-gray-900">
-                            Organizational Development
-                        </h3>
-                        <p class="mt-4 text-base text-gray-600">
-                            Transform your workforce strategy and corporate culture to align with business objectives.
-                        </p>
-                    </div>
-                    <div class="mt-6">
-                        <a href="#" class="text-indigo-600 font-medium hover:text-indigo-500 inline-flex items-center">
-                            Learn more
-                            <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="group relative bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div class="absolute -top-6 left-6 w-14 h-14 rounded-lg flex items-center justify-center bg-indigo-100 text-indigo-600">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                        </svg>
-                    </div>
-                    <div class="mt-8">
-                        <h3 class="text-lg font-semibold text-gray-900">
-                            Risk Management
-                        </h3>
-                        <p class="mt-4 text-base text-gray-600">
-                            Comprehensive risk assessment and mitigation strategies to protect your business interests.
-                        </p>
-                    </div>
-                    <div class="mt-6">
-                        <a href="#" class="text-indigo-600 font-medium hover:text-indigo-500 inline-flex items-center">
-                            Learn more
-                            <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="group relative bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div class="absolute -top-6 left-6 w-14 h-14 rounded-lg flex items-center justify-center bg-indigo-100 text-indigo-600">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                        </svg>
-                    </div>
-                    <div class="mt-8">
-                        <h3 class="text-lg font-semibold text-gray-900">
-                            Market Expansion
-                        </h3>
-                        <p class="mt-4 text-base text-gray-600">
-                            Data-driven market analysis and entry strategies to grow your business in new regions or sectors.
-                        </p>
-                    </div>
-                    <div class="mt-6">
-                        <a href="#" class="text-indigo-600 font-medium hover:text-indigo-500 inline-flex items-center">
-                            Learn more
-                            <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Approach Section -->
-<div class="bg-indigo-50 py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="lg:text-center">
-            <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Our Approach</h2>
-            <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                How We Deliver Results
-            </p>
-        </div>
-
-        <div class="mt-10">
-            <div class="space-y-10 md:space-y-0 md:grid md:grid-cols-3 md:gap-x-8 md:gap-y-10">
-                <div class="relative">
-                    <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
-                        </svg>
-                    </div>
-                    <div class="ml-16">
-                        <h3 class="text-lg leading-6 font-medium text-gray-900">Discovery & Analysis</h3>
-                        <p class="mt-2 text-base text-gray-600">
-                            We begin with deep research to understand your business context, challenges, and opportunities.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="relative">
-                    <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
-                        </svg>
-                    </div>
-                    <div class="ml-16">
-                        <h3 class="text-lg leading-6 font-medium text-gray-900">Strategic Planning</h3>
-                        <p class="mt-2 text-base text-gray-600">
-                            We develop customized strategies with clear roadmaps for implementation and measurable outcomes.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="relative">
-                    <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
-                    </div>
-                    <div class="ml-16">
-                        <h3 class="text-lg leading-6 font-medium text-gray-900">Implementation Support</h3>
-                        <p class="mt-2 text-base text-gray-600">
-                            We provide hands-on guidance to ensure successful execution of recommended strategies.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Case Studies Section -->
-<div id="case-studies" class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="lg:text-center">
-            <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Success Stories</h2>
-            <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                Client Case Studies
-            </p>
-            <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-                See how we've helped organizations like yours achieve transformative results.
-            </p>
-        </div>
-
-        <div class="mt-10 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3">
-            <div class="group relative bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
-                <div class="h-48 bg-indigo-200 overflow-hidden">
-                    <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Financial services case study">
-                </div>
-                <div class="p-6">
-                    <h3 class="text-lg font-medium text-gray-900">
-                        <a href="#">
-                            <span aria-hidden="true" class="absolute inset-0"></span>
-                            Financial Services Transformation
-                        </a>
-                    </h3>
-                    <p class="mt-2 text-sm text-gray-600">
-                        Helped a regional bank streamline operations and improve customer experience through digital transformation.
-                    </p>
-                    <div class="mt-4 flex items-center">
-                        <div class="flex-shrink-0">
-                            <span class="sr-only">Client logo</span>
-                            <div class="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold">FS</div>
-                        </div>
-                        <div class="ml-3">
-                            <p class="text-sm font-medium text-gray-900">Fortune 500 Financial Institution</p>
-                            <p class="text-sm text-gray-500">45% efficiency gain</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="group relative bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
-                <div class="h-48 bg-indigo-200 overflow-hidden">
-                    <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Retail case study">
-                </div>
-                <div class="p-6">
-                    <h3 class="text-lg font-medium text-gray-900">
-                        <a href="#">
-                            <span aria-hidden="true" class="absolute inset-0"></span>
-                            Retail Market Expansion
-                        </a>
-                    </h3>
-                    <p class="mt-2 text-sm text-gray-600">
-                        Guided a retail chain through successful international expansion into three new markets.
-                    </p>
-                    <div class="mt-4 flex items-center">
-                        <div class="flex-shrink-0">
-                            <span class="sr-only">Client logo</span>
-                            <div class="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold">RC</div>
-                        </div>
-                        <div class="ml-3">
-                            <p class="text-sm font-medium text-gray-900">National Retail Chain</p>
-                            <p class="text-sm text-gray-500">$120M in new revenue</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="group relative bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
-                <div class="h-48 bg-indigo-200 overflow-hidden">
-                    <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Healthcare case study">
-                </div>
-                <div class="p-6">
-                    <h3 class="text-lg font-medium text-gray-900">
-                        <a href="#">
-                            <span aria-hidden="true" class="absolute inset-0"></span>
-                            Healthcare System Optimization
-                        </a>
-                    </h3>
-                    <p class="mt-2 text-sm text-gray-600">
-                        Redesigned operational workflows for a hospital network, reducing costs while improving patient care.
-                    </p>
-                    <div class="mt-4 flex items-center">
-                        <div class="flex-shrink-0">
-                            <span class="sr-only">Client logo</span>
-                            <div class="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold">HC</div>
-                        </div>
-                        <div class="ml-3">
-                            <p class="text-sm font-medium text-gray-900">Regional Healthcare Provider</p>
-                            <p class="text-sm text-gray-500">30% cost reduction</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="mt-10 text-center">
-            <a href="#" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150">
-                View All Case Studies
-                <svg class="ml-2 -mr-1 w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                </svg>
-            </a>
-        </div>
-    </div>
-</div>
-
-<!-- Testimonials -->
-<div class="bg-gray-50 py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="lg:text-center">
-            <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Testimonials</h2>
-            <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                What Our Clients Say
-            </p>
-        </div>
-
-        <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            <div class="bg-white p-8 rounded-lg shadow-md">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0">
-                        <img class="h-12 w-12 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Sarah Johnson">
-                    </div>
-                    <div class="ml-4">
-                        <h3 class="text-lg font-medium text-gray-900">Sarah Johnson</h3>
-                        <p class="text-gray-500">CEO, TechCorp</p>
-                    </div>
-                </div>
-                <div class="mt-4">
-                    <p class="text-gray-600">
-                        "Adyam's strategic guidance helped us pivot our business model at a critical time. Their insights were invaluable in navigating market changes and positioning us for growth."
-                    </p>
-                </div>
-                <div class="mt-4 flex">
-                    {# Repeat 5 times for 5-star rating #}
-                    {% for _ in "12345" %}
-                    <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                    </svg>
-                    {% endfor %}
-                </div>
-            </div>
-
-            <div class="bg-white p-8 rounded-lg shadow-md">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0">
-                        <img class="h-12 w-12 rounded-full" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Michael Rodriguez">
-                    </div>
-                    <div class="ml-4">
-                        <h3 class="text-lg font-medium text-gray-900">Michael Rodriguez</h3>
-                        <p class="text-gray-500">Director, Urban Living</p>
-                    </div>
-                </div>
-                <div class="mt-4">
-                    <p class="text-gray-600">
-                        "The operational efficiency improvements recommended by Adyam resulted in $2M annual savings for our organization. Their team combines deep expertise with practical implementation knowledge."
-                    </p>
-                </div>
-                <div class="mt-4 flex">
-                    {% for _ in "12345" %}
-                    <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                    </svg>
-                    {% endfor %}
-                </div>
-            </div>
-
-            <div class="bg-white p-8 rounded-lg shadow-md">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0">
-                        <img class="h-12 w-12 rounded-full" src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Jennifer Lee">
-                    </div>
-                    <div class="ml-4">
-                        <h3 class="text-lg font-medium text-gray-900">Jennifer Lee</h3>
-                        <p class="text-gray-500">CFO, HealthPlus</p>
-                    </div>
-                </div>
-                <div class="mt-4">
-                    <p class="text-gray-600">
-                        "Adyam's consultants became true partners in our digital transformation journey. They didn't just provide recommendations - they rolled up their sleeves and helped us implement."
-                    </p>
-                </div>
-                <div class="mt-4 flex">
-                    {% for _ in "12345" %}
-                    <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                    </svg>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- CTA Section -->
-<div id="contact" class="bg-indigo-700">
-    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
-        <h2 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-            <span class="block">Ready to transform your business?</span>
-            <span class="block text-indigo-200">Contact our experts today.</span>
-        </h2>
-        <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
-            <div class="inline-flex rounded-md shadow">
-                <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50 transition duration-150">
-                    Get in Touch
-                </a>
-            </div>
-            <div class="ml-3 inline-flex rounded-md shadow">
-                <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 bg-opacity-60 hover:bg-opacity-70 transition duration-150">
-                    Learn more
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-{% endblock content%}
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

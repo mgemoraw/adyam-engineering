@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="min-h-screen bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 max-w-md w-full">
+        <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-6">Dashboard</h1>
+        <p class="text-gray-600 dark:text-gray-400 mb-4">Welcome to your dashboard!</p>
+        <p class="text-gray-600 dark:text-gray-400 mb-4">Here you can manage your projects, view statistics, and more.</p>
+        <a href="{% url 'core:project-admin' %}" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition duration-200">Go to Project Admin</a>
+    </div>
+</div>  
+
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileServicesButton = document.getElementById('mobile-services-button');
+        const mobileServicesDropdown = document.getElementById('mobile-services-dropdown');     
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenuButton.querySelector('svg').classList.toggle('hidden');
+            mobileMenuButton.querySelector('svg:nth-child(2)').classList.toggle('hidden');
+        });
+        // Mobile services dropdown toggle
+        mobileServicesButton.addEventListener('click', function() {         
+            mobileServicesDropdown.classList.toggle('hidden');
+            mobileServicesButton.querySelector('svg').classList.toggle('hidden');
+            mobileServicesButton.querySelector('svg:nth-child(2)').classList.toggle('hidden');
+        });
+    });
+</script>
+{% endblock scripts %}  
+
+{% block footer %}
+    {% include 'core/footer.html' %}
+{% endblock footer %}

@@ -1,0 +1,136 @@
+{% extends 'base/home.html' %}
+{% load static %}
+
+{% block title %}
+    Account Settings
+{% endblock %}
+
+{% block content %}
+<div class="settings-container">
+    <h1>Account Settings</h1>
+    
+    <div class="settings-tabs">
+        <button class="tab-btn active" data-tab="profile">Profile</button>
+        <button class="tab-btn" data-tab="security">Security</button>
+        <button class="tab-btn" data-tab="preferences">Preferences</button>
+    </div>
+
+    <div class="tab-content active" id="profile-tab">
+        <form method="post" enctype="multipart/form-data" class="settings-form">
+            {% csrf_token %}
+            <h2>Profile Information</h2>
+            
+            <div class="form-group avatar-upload">
+                <label for="id_avatar">Profile Picture</label>
+                <div class="avatar-preview">
+                    {% if form.instance.avatar %}
+                        <img src="{{ form.instance.avatar.url }}" id="avatar-preview">
+                    {% else %}
+                        <div class="avatar-default">{{ user.username|first|upper }}</div>
+                    {% endif %}
+                </div>
+                {{ form.avatar }}
+            </div>
+
+            <div class="form-group">
+                <label for="id_first_name">First Name</label>
+                {{ form.first_name }}
+            </div>
+
+            <div class="form-group">
+                <label for="id_last_name">Last Name</label>
+                {{ form.last_name }}
+            </div>
+
+            <div class="form-group">
+                <label for="id_bio">Bio</label>
+                {{ form.bio }}
+                <small class="form-text">Tell us a little about yourself</small>
+            </div>
+
+            <button type="submit" class="btn btn-save">Save Changes</button>
+        </form>
+    </div>
+
+    <div class="tab-content" id="security-tab">
+        <div class="security-settings">
+            <h2>Security Settings</h2>
+            
+            <div class="security-option">
+                <h3>Change Password</h3>
+                <p>Update your account password</p>
+                <a href="{% url 'base:change-password' %}" class="btn btn-primary">Change Password</a>
+            </div>
+
+            <div class="security-option">
+                <h3>Two-Factor Authentication</h3>
+                <p>Add an extra layer of security to your account</p>
+                <button class="btn btn-secondary" id="enable-2fa">Enable 2FA</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-content" id="preferences-tab">
+        <form method="post" class="preferences-form">
+            {% csrf_token %}
+            <h2>Notification Preferences</h2>
+            
+            <div class="preference-option">
+                {{ preference_form.email_notifications }}
+                <label for="id_email_notifications">Email Notifications</label>
+            </div>
+
+            <div class="preference-option">
+                {{ preference_form.newsletter }}
+                <label for="id_newsletter">Receive Newsletter</label>
+            </div>
+
+            <button type="submit" class="btn btn-save">Save Preferences</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Tab functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+
+                // Add active class to clicked button and corresponding content
+                btn.classList.add('active');
+                const tabId = btn.getAttribute('data-tab') + '-tab';
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Avatar preview
+        const avatarInput = document.querySelector('#id_avatar');
+        if (avatarInput) {
+            avatarInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        const preview = document.querySelector('#avatar-preview') || 
+                                       document.querySelector('.avatar-preview');
+                        if (preview.querySelector('img')) {
+                            preview.querySelector('img').src = event.target.result;
+                        } else {
+                            preview.innerHTML = `<img src="${event.target.result}" id="avatar-preview">`;
+                        }
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+    });
+</script>
+{% endblock %}

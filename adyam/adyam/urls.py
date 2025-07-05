@@ -17,12 +17,24 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
+from core.views import custom_404_redirect, custom_500_redirect, custom_403_redirect, custom_400_redirect
+# from core import project_admin
+
+# project/urls.py
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include("api.urls")),
     path('', include('core.urls')),
     path('blog/', include('blog.urls')),
     path('notes/', include('notes.urls')),
-]
+    path('projects/', include('projects.urls')),
+    
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = 'core.views.custom_404_redirect'
+handler500 = 'core.views.custom_500_redirect'
+handler403 = 'core.views.custom_403_redirect'
+handler400 = 'core.views.custom_400_redirect'

@@ -1,0 +1,67 @@
+.navbar-brand {
+    font-weight: bold;
+    font-size: 20px;
+    color: #003366 !important;
+}
+
+.card {
+    border-radius: 12px;
+}
+
+/* Resize and center logo */
+.login-logo img {
+    width: 160px !important;
+    max-height: 120px;
+    margin: 0 auto 20px auto;
+    display: block;
+}
+
+/* Style the login box */
+.login-box {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the input fields */
+.login-box input[type="text"],
+.login-box input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    font-size: 15px;
+}
+
+/* Style the login button */
+.login-box .btn-primary {
+    background-color: #004466;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.login-box .btn-primary:hover {
+    background-color: #006080;
+}
+
+/* Welcome text */
+.login-box h1, .login-box h2 {
+    text-align: center;
+    color: #003366;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+/* Error messages */
+.errornote {
+    color: red;
+    text-align: center;
+    margin-bottom: 10px;
+}

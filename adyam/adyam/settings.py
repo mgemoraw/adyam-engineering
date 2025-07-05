@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-zgshcm5s8t)pzzmy-s$i+qu(&w^yfj#21c7b0ur9h=1(y(_$ni
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -41,10 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'api',
     'core.apps.CoreConfig',
     'blog.apps.BlogConfig',
     'notes.apps.NotesConfig',
+    'projects.apps.ProjectsConfig',
 ]
 
 MIDDLEWARE = [
@@ -124,8 +124,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # or os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
+]
+
+MEDIA_URL = '/'
+MEDIA_ROOT = BASE_DIR / 'media'  # or os.path.join(BASE_DIR, 'media')
+MEDIAFILES_DIRS = [
+    os.path.join(BASE_DIR, 'media'),
 ]
 
 # Default primary key field type
@@ -140,3 +147,42 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
 #     ]
 # }
+
+
+# Email settings.py
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'adyamengineering@gmail.com'
+EMAIL_HOST_PASSWORD = 'Adyam@2024'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
+# Jazzmin settings
+JAZZMIN_SETTINGS = {
+    "site_title": "Adyam Admin",
+    "site_header": "Adyam Consultancy Admin",
+    "site_brand": "Adyam",
+    "welcome_sign": "Welcome to Adyam Admin Portal",
+    "site_logo": "images/adyam-logo.png",  # put your logo in /static/images/
+    "login_logo": "images/adyam-logo.png",
+    "login_logo_dark": "images/adyam-logo.png",
+
+    "copyright": "MiCon 2025",
+    "show_sidebar": True,
+    "navigation_expanded": True,
+    "hide_apps": [],
+    "hide_models": [],
+    "order_with_respect_to": ["auth", "your_app_name"],
+
+    "custom_css": "css/adyam_admin.css",  # optional
+    "custom_js": None,
+
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "your_app_name.ModelName": "fas fa-database",
+    },
+
+    "show_ui_builder": False,
+}

@@ -1,0 +1,129 @@
+{% extends 'core/home.html' %}
+{% load static %}
+
+
+{% block content %}
+
+{% block hro %}
+
+    {% include "core/hero_slider.html" %}
+{% endblock hro %}
+
+
+
+  <!-- About Section -->
+  <section class="py-6 bg-white">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-center text-secondary mb-12">Who We Are</h2>
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h3 class="text-2xl font-semibold text-gray-800 mb-4">Building With Purpose</h3>
+          <p class="text-gray-700 mb-6 text-lg leading-relaxed">
+            Adyam Engineering is a multidisciplinary consultancy firm dedicated to delivering sustainable, innovative, and client-focused solutions across the construction and infrastructure sectors. Our team of experts brings together decades of experience in architectural design, structural engineering, MEP systems, and project management.
+          </p>
+          <ul class="list-disc list-inside text-gray-600">
+            <li>Established with a mission to elevate engineering excellence</li>
+            <li>Driven by technology, sustainability, and precision</li>
+            <li>Trusted by clients across commercial, residential, and public sectors</li>
+          </ul>
+        </div>
+        <div>
+          <img src="{% static 'images/about-vision.jpeg' %}" alt="About Adyam Engineering" class="rounded-lg shadow-lg w-full h-auto object-cover">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vision and Mission -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <h3 class="text-2xl font-bold text-secondary mb-4">Our Vision</h3>
+          <p class="text-gray-700 text-lg leading-relaxed">
+            To be a leading engineering firm recognized for our commitment to innovation, integrity, and impact. We envision a future where every structure we design contributes to a better, safer, and more sustainable world.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-2xl font-bold text-secondary mb-4">Our Mission</h3>
+          <p class="text-gray-700 text-lg leading-relaxed">
+            Our mission is to empower communities and clients by delivering reliable, efficient, and environmentally responsible engineering services, while cultivating lasting partnerships grounded in trust and performance.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Values -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4 max-w-6xl text-center">
+      <h2 class="text-3xl font-bold text-secondary mb-12">Our Core Values</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+          <h4 class="text-xl font-semibold text-gray-800 mb-2">Integrity</h4>
+          <p class="text-gray-600">We uphold honesty, ethics, and transparency in all our interactions.</p>
+        </div>
+        <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+          <h4 class="text-xl font-semibold text-gray-800 mb-2">Innovation</h4>
+          <p class="text-gray-600">We embrace emerging technologies to deliver cutting-edge solutions.</p>
+        </div>
+        <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+          <h4 class="text-xl font-semibold text-gray-800 mb-2">Excellence</h4>
+          <p class="text-gray-600">We pursue quality and precision in every project we undertake.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- CTA Section -->
+<section class="bg-primary text-white py-16">
+    <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Partner With Us Today</h2>
+        <p class="text-xl mb-8 max-w-2xl mx-auto">
+            Whether you're planning a new construction project or need expert consulting services, Adyam Engineering is here to support your goals.
+        </p>
+        <button
+            type="button"
+            class="inline-block bg-white text-primary px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition duration-300 text-lg"
+            onclick="document.getElementById('contactModal').classList.remove('hidden')"
+        >
+            Get in Touch
+        </button>
+    </div>
+</section>
+
+<!-- Contact Modal -->
+<div id="contactModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="bg-white rounded-lg shadow-lg w-full max-w-lg p-8 relative">
+        <button
+            class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl"
+            onclick="document.getElementById('contactModal').classList.add('hidden')"
+            aria-label="Close"
+        >&times;</button>
+        <h3 class="text-2xl font-bold mb-4 text-primary">Contact Us</h3>
+        <form method="post" action="{% url 'core:contact-us' %}">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label for="name" class="block text-gray-700 mb-2">Name</label>
+                <input type="text" id="name" name="name" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+            </div>
+            <div class="mb-4">
+                <label for="phone" class="block text-gray-700 mb-2">Phone Number</label>
+                <input type="phone" id="phone" name="phone" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+            </div>
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 mb-2">Email</label>
+                <input type="email" id="email" name="email" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+            </div>
+            <div class="mb-4">
+                <label for="message" class="block text-gray-700 mb-2">Message</label>
+                <textarea id="message" name="message" rows="4" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+            </div>
+            <button type="submit" class="bg-primary text-white px-6 py-2 rounded font-semibold hover:bg-secondary transition duration-300">
+                Send Message
+            </button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
