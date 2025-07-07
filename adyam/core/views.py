@@ -19,7 +19,7 @@ def home(request):
     posts = BlogPost.objects.order_by('-published_at')[:3]  # Get the latest 3 blog posts
     contacts = Contact.objects.first()
     teams = TeamMember.objects.all()  # Assuming you have a TeamMembers model for the team section
-
+    # messages = Contac.get_messages(request)  # Get messages to display in the template    
     context = {
         'services': services, 
         'projects': projects, 
@@ -130,10 +130,12 @@ def contact_view(request):
         form = ContactMessageForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('core:about')  # or success page
+            messages.success(request, "Profile updated successfully.")
+            return redirect("core:home")  # or success page
+
     else:
         form = ContactMessageForm()
-    return render(request, 'core/about.html', {'contact_form': form})
+    return redirect("core:home")
 
 
 def contact_us(request):

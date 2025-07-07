@@ -33,6 +33,8 @@ urlpatterns = [
     path('projects/', include('projects.urls')),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 handler404 = 'core.views.custom_404_redirect'
 handler500 = 'core.views.custom_500_redirect'

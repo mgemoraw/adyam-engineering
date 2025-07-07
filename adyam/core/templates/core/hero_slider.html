@@ -1,66 +1,85 @@
-
 {% load static %}
 
 <!-- Hero Section -->
-
 <section class="relative bg-cover bg-center bg-no-repeat text-white mt-20 py-20"
-     style="background-image: url('{% static 'images/quality-infrastructure.webp' %}'); background-size: cover; background-position: center;"
-    >
+  style="background-image: url('{% static 'images/quality-infrastructure.webp' %}');"
+>
+  <!-- Optional overlay for readability -->
+  <div class="absolute inset-0 bg-black bg-opacity-50">
+    <img src="{% static 'images/quality-infrastructure.webp' %}" alt="Quality Infrastructure" class="w-full h-full object-cover opacity-50">
+  </div>
 
-    <!-- Optional overlay for readability -->
-  <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+  <div class="relative container mx-auto px-4 text-center">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4">Welcome to Adyam Engineering</h1>
+    <p class="text-xl mb-8 max-w-2xl mx-auto font-bold">Engineering Excellence in Every Build</p>
+    {% if user.is_authenticated %}
+      <a href="projects/dashboard/" class="inline-block bg-gray-100 text-red-600 border-2 px-8 py-3 rounded-lg font-semibold hover:bg-gray-300 hover:text-red-600 transition duration-300">Go to Your Project Dashboard</a>
+    {% else %}
+      <a href="{% url 'core:services' %}" class="inline-block bg-gray-100 text-red-600 border-2 px-8 py-3 rounded-lg font-semibold hover:bg-gray-300 hover:text-red-600 transition duration-300">Explore Our Services and Projects</a>
+    {% endif %}
+  </div>
 
+  <!-- Burger button for small screens -->
+  <button id="contacts-burger" class="md:hidden absolute bottom-6 right-6 z-20 bg-black bg-opacity-60 rounded-full p-3 focus:outline-none" aria-label="Show contacts">
+    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16"/>
+    </svg>
+  </button>
 
-    <div class="relative container mx-auto px-4 text-center ">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4 ">Welcome to Adyam Engineering</h1>
-      <p class="text-xl mb-8 max-w-2xl mx-auto ">Engineering Excellence in Every Build </p>
-        
-      {%if user.is_authenticated %}
-      <a href="projects/dashboard/" class="inline-block bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">Go to Your Project Dashboard</a>
-      {%else%}
-      <a href="{% url 'core:services' %}" class="inline-block bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">Explore Our Services and Projects</a>
-      {%endif%}
+  <!-- Contacts: visible on md+, hidden on small unless burger is active -->
+  <div id="contacts-bar" class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent py-4
+    md:block md:bg-black md:bg-opacity-50 hidden transition-all duration-300">
+    <div class="flex flex-wrap justify-center items-center gap-x-4 gap-y-3 max-w-5xl mx-auto px-2 sm:gap-x-8">
+      {% if contacts.phone %}
+      <a href="tel:{{ contacts.phone }}" class="flex flex-col sm:flex-row items-center text-white hover:text-green-400 transition min-w-[90px]" title="Phone">
+        <svg class="w-8 h-8 sm:w-10 sm:h-10 text-green-400 mb-1 sm:mb-0 sm:mr-2" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 22 2 13.93 2 4.5a1 1 0 011-1H6.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z"/>
+        </svg>
+        <span class="text-base sm:text-lg break-all">{{ contacts.phone }}</span>
+      </a>
+      {% endif %}
+
+      {% if contacts.whatsapp %}
+      <a href="https://wa.me/{{ contacts.whatsapp|urlencode }}" target="_blank" class="flex flex-col sm:flex-row items-center text-white hover:text-green-400 transition min-w-[90px]" title="WhatsApp">
+        <svg class="w-8 h-8 sm:w-10 sm:h-10 text-green-500 mb-1 sm:mb-0 sm:mr-2" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M20.52 3.48A11.94 11.94 0 0012 0C5.37 0 0 5.37 0 12c0 2.11.55 4.16 1.6 5.98L0 24l6.18-1.62A11.94 11.94 0 0012 24c6.63 0 12-5.37 12-12 0-3.19-1.24-6.19-3.48-8.52zM12 22c-1.85 0-3.67-.5-5.24-1.44l-.37-.22-3.67.96.98-3.57-.24-.37A9.94 9.94 0 012 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.2-7.8c-.28-.14-1.65-.81-1.9-.9-.25-.09-.43-.14-.61.14-.18.28-.7.9-.86 1.08-.16.18-.32.2-.6.07-.28-.14-1.18-.44-2.25-1.4-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.34.42-.51.14-.17.18-.29.28-.48.09-.19.05-.36-.02-.5-.07-.14-.61-1.47-.84-2.02-.22-.53-.45-.46-.61-.47-.16-.01-.35-.01-.54-.01-.19 0-.5.07-.76.34-.26.27-1 1-.97 2.44.03 1.44 1.03 2.84 1.18 3.04.15.2 2.03 3.1 4.92 4.23.69.28 1.23.45 1.65.58.69.22 1.32.19 1.82.12.56-.08 1.65-.67 1.89-1.32.23-.65.23-1.2.16-1.32-.07-.12-.25-.19-.53-.33z"/>
+        </svg>
+        <span class="text-base sm:text-lg break-all">{{ contacts.whatsapp }}</span>
+      </a>
+      {% endif %}
+
+      {% if contacts.telegram %}
+      <a href="https://t.me/{{ contacts.telegram|urlencode }}" target="_blank" class="flex flex-col sm:flex-row items-center text-white hover:text-blue-400 transition min-w-[90px]" title="Telegram">
+        <svg class="w-8 h-8 sm:w-10 sm:h-10 text-blue-500 mb-1 sm:mb-0 sm:mr-2" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M9.993 15.674l-.398 4.01c.57 0 .816-.244 1.113-.537l2.67-2.547 5.537 4.04c1.014.56 1.74.266 1.99-.94l3.61-16.84c.33-1.56-.57-2.18-1.58-1.8L2.16 9.13c-1.54.6-1.52 1.46-.28 1.85l4.37 1.37 10.16-6.41c.48-.3.92-.13.56.17"/>
+        </svg>
+        <span class="text-base sm:text-lg break-all">{{ contacts.telegram }}</span>
+      </a>
+      {% endif %}
+
+      {% if contacts.email %}
+      <a href="mailto:{{ contacts.email }}" class="flex flex-col sm:flex-row items-center text-white hover:text-red-400 transition min-w-[90px]" title="Email">
+        <svg class="w-8 h-8 sm:w-10 sm:h-10 text-red-400 mb-1 sm:mb-0 sm:mr-2" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 20v-9.99l7.29 6.71a1 1 0 001.42 0L20 10.01V20H4z"/>
+        </svg>
+        <span class="text-base sm:text-lg break-all">{{ contacts.email }}</span>
+      </a>
+      {% endif %}
     </div>
-    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent py-4">
-      <div class="flex flex-wrap justify-center items-center gap-x-8 gap-y-3 max-w-5xl mx-auto px-4">
-        
-        {% if contacts.phone %}
-        <a href="tel:{{ contacts.phone }}" class="flex items-center text-white hover:text-green-400 transition" title="Phone">
-          <svg class="w-10 h-10 text-green-400 mr-2" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 22 2 13.93 2 4.5a1 1 0 011-1H6.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z"/>
-          </svg>
-          <span class="text-lg">{{ contacts.phone }}</span>
-        </a>
-        {% endif %}
-
-        {% if contacts.whatsapp %}
-        <a href="https://wa.me/{{ contacts.whatsapp|urlencode }}" target="_blank" class="flex items-center text-white hover:text-green-400 transition" title="WhatsApp">
-          <svg class="w-10 h-10 text-green-500 mr-2" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M20.52 3.48A11.94 11.94 0 0012 0C5.37 0 0 5.37 0 12c0 2.11.55 4.16 1.6 5.98L0 24l6.18-1.62A11.94 11.94 0 0012 24c6.63 0 12-5.37 12-12 0-3.19-1.24-6.19-3.48-8.52zM12 22c-1.85 0-3.67-.5-5.24-1.44l-.37-.22-3.67.96.98-3.57-.24-.37A9.94 9.94 0 012 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.2-7.8c-.28-.14-1.65-.81-1.9-.9-.25-.09-.43-.14-.61.14-.18.28-.7.9-.86 1.08-.16.18-.32.2-.6.07-.28-.14-1.18-.44-2.25-1.4-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.34.42-.51.14-.17.18-.29.28-.48.09-.19.05-.36-.02-.5-.07-.14-.61-1.47-.84-2.02-.22-.53-.45-.46-.61-.47-.16-.01-.35-.01-.54-.01-.19 0-.5.07-.76.34-.26.27-1 1-.97 2.44.03 1.44 1.03 2.84 1.18 3.04.15.2 2.03 3.1 4.92 4.23.69.28 1.23.45 1.65.58.69.22 1.32.19 1.82.12.56-.08 1.65-.67 1.89-1.32.23-.65.23-1.2.16-1.32-.07-.12-.25-.19-.53-.33z"/>
-          </svg>
-          <span class="text-lg">{{ contacts.whatsapp }}</span>
-        </a>
-        {% endif %}
-
-        {% if contacts.telegram %}
-        <a href="https://t.me/{{ contacts.telegram|urlencode }}" target="_blank" class="flex items-center text-white hover:text-blue-400 transition" title="Telegram">
-          <svg class="w-10 h-10 text-blue-500 mr-2" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M9.993 15.674l-.398 4.01c.57 0 .816-.244 1.113-.537l2.67-2.547 5.537 4.04c1.014.56 1.74.266 1.99-.94l3.61-16.84c.33-1.56-.57-2.18-1.58-1.8L2.16 9.13c-1.54.6-1.52 1.46-.28 1.85l4.37 1.37 10.16-6.41c.48-.3.92-.13.56.17"/>
-          </svg>
-          <span class="text-lg">{{ contacts.telegram }}</span>
-        </a>
-        {% endif %}
-
-        {% if contacts.email %}
-        <a href="mailto:{{ contacts.email }}" class="flex items-center text-white hover:text-red-400 transition" title="Email">
-          <svg class="w-10 h-10  text-red-400 mr-2" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 20v-9.99l7.29 6.71a1 1 0 001.42 0L20 10.01V20H4z"/>
-          </svg>
-          <span class="text-lg">{{ contacts.email }}</span>
-        </a>
-        {% endif %}
-
-      </div>
-    </div>
-
+  </div>
 </section>
+
+<!-- Burger contacts JS -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const burger = document.getElementById('contacts-burger');
+    const bar = document.getElementById('contacts-bar');
+    if (burger && bar) {
+      burger.addEventListener('click', function() {
+        bar.classList.toggle('hidden');
+        bar.classList.toggle('bg-black');
+        bar.classList.toggle('bg-opacity-50');
+      });
+    }
+  });
+</script>

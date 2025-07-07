@@ -6,12 +6,14 @@
     >
 
     <!-- Optional overlay for readability -->
-  <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+  <div class="absolute inset-0 bg-black bg-opacity-50">
+    <img src="{% static 'images/engineering-services.png' %}" alt="Engineering Services" class="w-full h-full object-cover opacity-50">
+  </div>
 
 
     <div class="relative container mx-auto px-4 text-center ">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4 ">Welcome to Adyam Engineering</h1>
-      <p class="text-xl mb-8 max-w-2xl mx-auto ">Engineering Excellence in Every Build </p>
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 ">Our Core Engineering Services</h1>
+      <p class="text-xl mb-8 max-w-2xl mx-auto "><i>"Engineering Excellence in Every Build" </i></p>
         
       {% comment %} <a href="{% url 'core:services' %}" class="inline-block bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">Explore Our Services and Projects</a> {% endcomment %}
 
@@ -24,9 +26,9 @@
   {% comment %} Service details  {% endcomment %}
 
   {% comment %} List of Services {% endcomment %}
-  <section id="services" class="py-16 bg-white">
+  <section id="services" class="py-6 bg-white">
     <div class="container mx-auto px-4 max-w-6xl">
-      <h2 class="text-3xl font-bold text-center text-secondary mb-3">Our Core Engineering Services</h2>
+      {% comment %} <h2 class="text-3xl font-bold text-center text-secondary mb-3">Our Core Engineering Services</h2> {% endcomment %}
 
       {% if service %}
         <div class="bg-white rounded-lg shadow-xl overflow-hidden p-8 mb-8">
@@ -183,19 +185,32 @@
     </div>
   </section>
 
-  <section class="bg-primary text-white py-16">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Start Your Next Project?</h2>
-      <p class="text-xl mb-8 max-w-2xl mx-auto">Connect with Adyam Engineering today for a consultation and discover how we can transform your ideas into reality.</p>
-      
-      <button
-        type="button"
-        class="inline-block bg-white text-primary px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition duration-300 text-lg"
-        onclick="document.getElementById('contactModal').classList.remove('hidden')"
-      >
-        Contact Our Experts
-      </button>
-    </div>
+   
+   <section class="relative bg-primary text-white py-16 overflow-hidden">
+     
+    <!-- Optional overlay for readability -->
+      <div class="absolute inset-0 bg-black bg-opacity-100">
+        <img src="{% static 'images/smart-city.webp' %}" alt="Quality Infrastructure" class="w-full h-full object-cover opacity-50">
+      </div>
+ 
+    <!-- Content -->
+  <div class="container mx-auto px-4 text-center relative z-10">
+    
+    <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Start Your Next Project?</h2>
+    <p class="text-xl mb-8 max-w-2xl mx-auto">Connect with Adyam Engineering today for a consultation and discover how we can transform your ideas into reality.</p>
+
+    <button
+      type="button"
+      class="inline-flex bg-transparent border-2  px-8 py-4 rounded-lg font-semibold hover:bg-gray-200 hover:text-blue-600 transition duration-300 text-lg"
+      onclick="document.getElementById('contactModal').classList.remove('hidden')"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary mr-2" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zM4 20c0-2.5 4.5-4 8-4s8 1.5 8 4v2H4v-2z"/>
+        <path d="M13 13h-2l-1 2 2 4 2-4z"/>
+      </svg>
+      Contact Our Experts
+    </button>
+  </div>
 
 
 <!-- Contact Modal -->
