@@ -1,0 +1,12 @@
+
+{
+  "signIn": {
+    "title": "መግቢያ",
+    "email": "ኢሜል",
+    "password": "ሚስጥር ቁልፍ",
+    "forgotPassword": "ቁልፍ (ፓስዎርድ) ረስተዋል?",
+    "submit": "ይግቡ",
+    "orSignInWith": "ሌሎች መግቢያዎችን ይጠቀሙ",
+    "userAgreement": "Learn user licence agreement"
+  }
+}

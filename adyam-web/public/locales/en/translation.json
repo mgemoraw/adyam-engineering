@@ -1,0 +1,12 @@
+
+{
+  "signIn": {
+    "title": "Sign In",
+    "email": "E-mail",
+    "password": "Password",
+    "forgotPassword": "Forgot Password",
+    "submit": "Sign In",
+    "orSignInWith": "Or Sign in with",
+    "userAgreement": "Learn user licence agreement"
+  }
+}

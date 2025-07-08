@@ -1,0 +1,89 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+
+.navbar {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10px;
+  background-color: #ccc;
+  color: var(color-primary);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.menu {
+  display: flex;
+  gap: 20px;
+}
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.menu a {
+  text-decoration: none;
+  color: var(--color-accent);
+  transition: color 0.3s;
+}
+
+.menu a:hover {
+  color: #00bcd4;
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger span {
+  height: 3px;
+  width: 25px;
+  background: var(--color-primary);
+  margin: 4px 0;
+  transition: 0.3s;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    align-items: baseline;
+  }
+
+  .menu.open {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+
+.circled {
+  display: inline-block;
+  border-radius: 50%;
+  background-color: none;
+  color: white;
+  text-align: center;
+ 
+  font-size: 1rem;
+}
