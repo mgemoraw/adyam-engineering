@@ -8,10 +8,28 @@
 
     <!-- Tailwind CSS for production -->
     {% comment %} <link rel="stylesheet" href="{% static 'css/tailwind.css' %}"/> {% endcomment %}
-    <link rel="stylesheet" href="{% static 'css/index.css' %}" >
+    {% comment %} <link rel="stylesheet" href="{% static 'css/index.css' %}" > {% endcomment %}
     
     <!-- Tailwind CSS via CDN (for development) -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#721616', // Custom primary color
+                        secondary: '#1a365d', // Custom secondary color
+                        // primary: '#1D4ED8', // Custom primary color
+                        // secondary: '#FBBF24', // Custom secondary color
+                        error: '#DC2626', // Custom error color
+                        success: '#16A34A', // Custom success color
+                        info: '#2563EB', // Custom info color
+                        warning: '#F59E0B', // Custom warning color
+                    },
+                },
+            },
+        }
+    </script>
 </head>
 <body>
 
