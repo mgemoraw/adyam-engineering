@@ -186,8 +186,28 @@ class Info(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Contact Info'
+        verbose_name_plural = 'Contact Information'
+
+
+
+class ContactMessage(models.Model):
+    name = models.CharField(max_length=255)
+    phone = models.CharField(max_length=15)
+    email = models.CharField(max_length=250)
+    body  = models.TextField()
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
         return f'Message from {self.name} - {self.subject}'
 
     class Meta:
         verbose_name = 'Contact Message'
         verbose_name_plural = 'Contact Messages'
+
+ 

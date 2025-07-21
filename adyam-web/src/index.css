@@ -1,3 +1,7 @@
+@import "tailwindcss";
+
+/* File: adyam-web/src/index.css */
+/* This file contains global styles for the Adyam web application. */
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

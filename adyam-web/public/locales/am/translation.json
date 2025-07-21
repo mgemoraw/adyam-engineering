@@ -8,5 +8,86 @@
     "submit": "ይግቡ",
     "orSignInWith": "ሌሎች መግቢያዎችን ይጠቀሙ",
     "userAgreement": "Learn user licence agreement"
+  },
+  "navbar": {
+    "home": "መነሻ ገጽ",
+    "aboutUs": "ስለ እኛ",
+    "services": "አገልግሎቶች",
+    "projects": "ፕሮጀክቶች",
+    "contactUs": "ያግኙን",
+    "login": "ግባ",
+    "logout": "ውጣ",
+    "blogs": "ልጥፎች",
+    "news": "ዜና",
+    "language": "ቋንቋ",
+    "languageSwitcher": "ቋንቋ ምረጫ",
+    "userProfile": "የተጠቃሚ መረጃ",
+    "managerDashboard": "የማኔጀር መዳሪ",
+    "adminDashboard": "የአስተዳዳሪ መዳሪ",
+    "companyName": "አድያም ኢንጅነሪንግ አ.ማ. "
+  },
+   "services": {
+    "structural": "ስነመዋቅር ምህንድስና",
+    "projectManagement": "ፕሮጀክት አስተዳደር",
+    "supervision": "ምህንድስና ሥራ ቁጥጥር",
+    "feasibility": "የአዋጭነት ጥናት",
+    "quantitySurveying": "መጠን ምርመራ"
+  },
+  "navigation": {
+    "home": "መነሻ ገጽ",
+    "about": "ስለ እኛ",
+    "projects": "ፕሮጀክቶች",
+    "blog": "ልጥፎች",
+    "contact": "ያግኙን"
+  },
+  
+  "testimonials": {
+    "title": "ደንበኞቻችን ምን ይላሉ",
+    "subtitle": "ከደስተኛ ደንበኞቻችን ስለ ከእኛ ጋር ያላቸው ልምድ ይስማሙ",
+    "goToTestimonial": "#{{number}}",
+    "client1": {
+      "name": "ሚካኤል ጆንሰን",
+      "position": "የፕሮጀክት አስተዳዳሪ",
+      "company": "ኢትዮ ኮንስትራክሽን ፒኤልሲ",
+      "content": "አድያም ምህንድስና ንግድ ማዕከል ፕሮጀክታችን አስደናቂ ውጤቶችን አቅርቧል። ዝርዝር ትኩረታቸውን እና ቴክኒካዊ ክህሎታቸውን፣ ይስራ ጥራታቸውን አደነቅን።"
+    },
+    "client2": {
+      "name": "ሳራ ዊሊያምስ",
+      "position": "ዳይሬክተር",
+      "company": "የከተማ ልማት ኤጀንሲ",
+      "content": "አድያም ውስብስብ ለሆኑ  የከተማ ዕቅዶች ፈጠራዊ መፍትሄዎችን አቅርቧል። የእነሱ አማካሪነት በከተማ ማስፋፋት ፕሮጀክታችን ስኬት ውስጥ ወሳኝ ነበር።"
+    },
+    "client3": {
+      "name": "ዳኒኤል ተክሉ",
+      "position": "ዋና ሥራ አስኪያጅ",
+      "company": "ሀበሻ ገንቢዎች",
+      "content": "ከብዙ የምህንድስና ኩባንያዎች ጋር ሰርተናል፣ ነገር ግን አድያም በአገር ውስጥ የግንባታ ደረጃዎች ጥልቀት ባለው ግንዛቤ ተለይተው ይታወቃሉ።"
+    }
+  },
+  "projects": {
+    "title": "የተለዩ ፕሮጀክቶቻችን",
+    "subtitle": "ከቅርብ ጊዜ የምህንድስና አማካሪነት ፕሮጀክቶቻችንን ይመልከቱ"
+  },
+  "showcases": {
+    "title": "የተለዩ ፕሮጀክቶቻችን",
+    "subtitle": "ከቅርብ ጊዜ የምህንድስና አማካሪነት ፕሮጀክቶቻችንን ይመልከቱ",
+    "viewProject": "ፕሮጀክቱን ይመልከቱ",
+    "viewAllProjects": "ሁሉንም ፕሮጀክቶች ይመልከቱ",
+    "project1": {
+      "title": "የንግድ ሕንፃ ልማት",
+      "description": "በአዲስ አበባ ለዚህ 25 ፎቅ የንግድ ሕንፃ ሙሉ የስትራክቸር ምህንድስና እና የፕሮጀክት አስተዳደር አገልግሎቶችን አቅርበናል።",
+      "category": "ንግድ"
+    },
+    "project2": {
+      "title": "የመንገድ ግንባታ ቁጥጥር",
+      "description": "ለ120 ኪ.ሜ የመንገድ  ፕሮጀክት የጥራት ቁጥጥር እና የግንባታ ቁጥጥር አስተዳደር አድርገናል።",
+      "category": "መሠረተ ልማት"
+    },
+    "project3": {
+      "title": "የመኖሪያ ቤቶች ዲዛይን",
+      "description": "በ500 የመኖሪያ ቤቶች ለተመጣጠነ የመኖሪያ ውስብስብ የስትራክቸር ስርዓቶችን አዘጋጅተናል።",
+      "category": "መኖሪያ"
+    }
   }
+
 }

@@ -7,22 +7,21 @@
             <div class="flex-shrink-0 flex items-center">
                 <a href="/" class="flex items-center">
                     <img class="h-16 w-auto rounded-full shadow-lg" src="{% static 'images/adyam-logo.png' %}" alt="Adyam Engineering">
-                    <span class="ml-3 text-2xl font-bold text-white hidden md:block">Adyam Engineering</span>
+                    <span class="ml-3 text-2xl font-bold text-white hidden md:block">Adyam Engineering S.C.</span>
                 </a>
             </div>
 
             <!-- Desktop Navigation -->
-            <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+            <div class="hidden md:ml-6 md:flex md:items-center md:space-x-2">
                
                 <a href="/" class="text-white hover:bg-sky-800 px-3 py-2 text-sm font-medium {% if request.path == '/' %}border-b-2 border-sky-300{% endif %}">Home</a>
                 
-                <a href="{%url 'core:services' %}" class="text-white hover:bg-sky-800 px-3 py-2 text-sm font-medium {% if request.path == '/services/' %}border-b-2 border-sky-300{% endif %}">Services</a>
+                {% comment %} <a href="{%url 'core:services' %}" class="text-white hover:bg-sky-800 px-3 py-2 text-sm font-medium {% if request.path == '/services/' %}border-b-2 border-sky-300{% endif %}">Services</a> {% endcomment %}
                 
-                {% comment %}
                 
                 <!-- Services Dropdown -->
                 <div class="relative group">
-                    <button class="text-white hover:text-sky-300 px-3 py-2 text-sm font-medium flex items-center">
+                    <button class="text-white hover:text-sky-300 px-3 py-2 text-sm font-medium flex items-center ">
                         Services
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -39,14 +38,14 @@
                     </div>
                 </div>
 
-                {% endcomment %}
+                
 
 
                 <a href="#projects" class="text-white hover:bg-sky-800 px-3 py-2 text-sm font-medium{% if request.path == '/projects/' %}border-b-2 border-sky-300{% endif %}">Projects</a>
-                <a href="#vacancies" class="text-white hover:bg-sky-800 px-3 py-2 text-sm font-medium {% if request.path == '/vacancy/' %}border-b-2 border-sky-300{% endif %}">Vacancy</a>
+                <a href="#news" class="text-white hover:bg-sky-800 px-3 py-2 text-sm font-medium {% if request.path == '/news/' %}border-b-2 border-sky-300{% endif %}">News</a>
                 
                 <!-- CTA Button -->
-                <a href="{%url 'core:about' %}" class="block px-3 py-2  text-base font-medium text-white hover:bg-sky-800 {% if request.path == '/about/' %}border-b-2 border-sky-300{% endif %}">About Us</a>
+                <a href="{%url 'core:about' %}" class="block px-3 py-2  text-base font-medium text-white hover:bg-sky-800 {% if request.path == '/about/' %}border-b-2 border-sky-300{% endif %}">About</a>
 
                 {% if user.is_authenticated %}
                 <a href="{%url 'core:user-logout'%}" class="ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-sky-700 hover:bg-sky-800 transition-colors duration-300">
@@ -60,7 +59,7 @@
             </div>
 
             <!-- Mobile menu button -->
-            <div class="-mr-2 flex items-center md:hidden">
+            <div class="mr-2 flex items-center md:hidden">
                 <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-sky-200 hover:text-white hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
                     <span class="sr-only">Open main menu</span>
                     <!-- Icon when menu is closed -->

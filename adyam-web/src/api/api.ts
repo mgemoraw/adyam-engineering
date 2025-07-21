@@ -2,7 +2,12 @@ import axios from 'axios';
 
 // Create an Axios instance
 const api = axios.create({
-    baseURL: 'https://your-api-base-url.com',
+    baseURL: 'http:127.0.0.1:8000/api', // Replace with your API base URL
+    headers: { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+    },
+    withCredentials: true, // Include credentials for cross-origin requests
     timeout: 10000,
 });
 

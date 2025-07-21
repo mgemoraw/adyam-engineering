@@ -8,5 +8,163 @@
     "submit": "Sign In",
     "orSignInWith": "Or Sign in with",
     "userAgreement": "Learn user licence agreement"
+  },
+  "navbar": {
+    "home": "Home",
+    "aboutUs": "About",
+    "services": "Services",
+    "projects": "Projects",
+    "contactUs": "Contact",
+    "login": "Login",
+    "logout": "Logout",
+    "blogs": "Blogs",
+    "news": "News",
+    "language": "Language",
+    "languageSwitcher": "Language Switcher",
+    "userProfile": "User Profile",
+    "managerDashboard": "Manager Dashboard",
+    "adminDashboard": "Admin Dashboard",
+    "companyName": "Adyam Engineering S.C."
+  },
+   "services": {
+    "structural": "Structural Engineering",
+    "projectManagement": "Project Management",
+    "projectManagementDesc": "Project Management,",
+    "supervision": "Construction Supervision",
+    "feasibility": "Feasibility Studies",
+    "feasibilityStudies": "Project Feasibility Studies",
+    "feasibilityStudiesDesc": "Project Feasibility Studies",
+    "urbanPlanning": "Urban Planning",
+    "urbanPlanningDesc": "Urban Planning",
+    "quantitySurveying": "Quantity Surveying",
+    "quantitySurveyingDesc": "Quantity Surveying",
+    "structuralDesign": "Structural Design",
+    "structuralDesignDesc": "Structural Design",
+    "constructionSupervision": "Construction Supervision",
+    "constructionSupervisionDesc": "Construction Supervision"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About Us",
+    "projects": "Our Projects",
+    "blog": "Blog",
+    "contact": "Contact Us"
+  },
+  "home": {
+    "welcome": "Welcome to Adyam Engineering",
+    "mission": "Our mission is to provide innovative engineering solutions that meet the highest standards of quality and sustainability.",
+    "servicesOverview": "Explore our services to see how we can help you achieve your project goals.",
+    "contactUs": "Contact us today to discuss your project needs.",
+    "heroTitle": "Adyam Engineering Consulting Architects & Engineers",
+    "heroSubtitle": "Engineering Excellence in Every Build",
+    "getInTouch": "Get in Touch",
+    "ourServices": "Our Services",
+    "servicesSubtitle": "We value your desire",
+    "aboutTitle": "About Us",
+    "aboutSubtitle": "Who We Are",
+    "aboutDescription": "Adyam Engineering is a leading engineering consulting firm specializing in structural engineering, project management, and construction supervision. With a commitment to excellence and innovation, we deliver high-quality engineering solutions tailored to our clients' needs.",
+    "aboutText1": "Founded in 2024, Adyam Engineering has grown to become a trusted partner in the construction industry. Our team of experienced engineers and project managers work collaboratively to ensure that every project is completed on time, within budget, and to the highest standards of quality.",
+    "aboutText2": "We pride ourselves on our ability to adapt to the unique challenges of each project, leveraging the latest technologies and methodologies to deliver optimal results. Our expertise spans a wide range of sectors, including residential, commercial, and industrial projects.",
+    "aboutText3": "At Adyam Engineering, we believe in building lasting relationships with our clients. We are dedicated to understanding your specific needs and providing personalized service that exceeds your expectations. Our goal is to be your go-to engineering partner for all your construction projects.",
+    "aboutText4": "Whether you are looking for structural design, project management, or construction supervision, Adyam Engineering has the expertise and experience to help you succeed. Contact us today to learn more about how we can assist you with your next project.",
+    "ourExpertise": "Our Expertise",
+    "projects": "Our Projects",
+    "testimonials": "What Our Clients Say",
+    "readMore": "Read More",
+
+    "aboutFeature1": "Expertise and Experience",
+    "aboutFeature1Desc": "Our team consists of highly skilled professionals with extensive experience getInTouch in the engineering field. We bring a wealth of knowledge and expertise to every project, ensuring that we deliver the best possible results for our clients.",
+    "aboutFeature2": "Innovation and Technology",  
+    "aboutFeature2Desc": "We are committed to staying at the forefront of engineering technology and methodologies. Our innovative approach allows us to tackle complex challenges and deliver cutting-edge solutions that meet the evolving needs of our clients.",
+    "aboutFeature3": "Service Quality ",
+    "aboutFeature3Desc": "Quality is at the heart of everything we do. We adhere to the highest standards of quality assurance and control, ensuring that every project we undertake meets or exceeds industry standards and client expectations.",
+    "aboutFeature4": "Sustainability",
+    "aboutFeature4Desc": "We are dedicated to promoting sustainable practices in all our projects. Our focus on sustainability ensures that we minimize environmental impact while delivering efficient and effective engineering solutions.",
+    "aboutFeature5": "Client-Centric Approach",
+    "aboutFeature5Desc": "Our clients are at the center of everything we do. We take the time to understand your unique needs and challenges, providing personalized service and support throughout the project lifecycle. Our goal is to build lasting relationships based on trust and mutual success.",
+
+    "visitUs": "Visit Us",
+    "companyAddress": "Addis Ababa, Ethiopia",
+    "callUs": "Call Us",
+    "emailUs": "Email Us",
+
+    "ourProcess": "Our Process",
+    "processSubtitle": "How We Work",
+    "processStep1": "Initial Consultation & Needs Assessment",
+    "processStep1Desc": "This is where we get to know you and your project. We'll discuss your vision, objectives, challenges, and initial requirements to understand the full scope of your needs. Our goal is to gain a clear picture of how we can best support your success.", 
+    
+    "processStep2": "Strategic Planning & Proposal Development",
+    "processStep2Desc": "Based on our consultation, our experts will develop a tailored strategy outlining the recommended approach, scope of work, key deliverables, and a detailed timeline. You'll receive a comprehensive proposal that clearly articulates our proposed solutions and the value we bring to your project.",
+    
+    "processStep3": "Project Execution & Collaborative Design",
+    "processStep3Desc": "Once the proposal is approved, our team springs into action. We'll meticulously execute the project, maintaining open communication and collaboration with you at every stage. We leverage our expertise and cutting-edge tools to deliver high-quality designs, analyses, and reports.",
+    
+    "processStep4": "Final Delivery & Ongoing Support",
+    "processStep4Desc": "Upon successful completion, we'll deliver all final project documentation and deliverables. But our commitment doesn't end there; we're available for ongoing support, clarifications, and any future needs, ensuring your project continues to thrive long after our initial engagement.",
+    "readyToStart": "Ready to Build the Future??",
+    "ctaSubtitle": "Let's discuss how our expertise can bring your next civil engineering project to life.!",
+    "getReadyDesc": "At Adyam Engineering, we are ready to help you building your future. Whether you are planning a new construction project or need expert consultancy services, our team is here to assist you every step of the way.",
+    "getFreeConsultation": "Get Free Consultation"
+
+    
+    
+  },
+  "stats": {
+    "projectsCompleted": "Projects Completed",
+    "clientsServed": "Clients Served",
+    "yearsExperience": "Years of Experience",
+    "clientSatisfaction": "Client Satisfaction"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Our past projects"
+  },
+  
+  "testimonials": {
+    "title": "What Our Clients Say",
+    "subtitle": "Hear from our satisfied clients about their experience working with us",
+    "goToTestimonial": "#{{number}}",
+    "client1": {
+      "name": "Michael Johnson",
+      "position": "Project Manager",
+      "company": "Ethio Construction PLC",
+      "content": "Adyam Engineering delivered exceptional results on our commercial complex project. Their attention to detail and technical expertise saved us both time and money."
+    },
+    "client2": {
+      "name": "Sarah Williams",
+      "position": "Director",
+      "company": "Urban Development Agency",
+      "content": "The team at Adyam provided innovative solutions to complex urban planning challenges. Their consultancy was instrumental in the success of our city expansion project."
+    },
+    "client3": {
+      "name": "Daniel Teklu",
+      "position": "CEO",
+      "company": "Habesha Builders",
+      "content": "We've worked with many engineering firms, but Adyam stands out for their professionalism and deep understanding of local construction standards."
+    }
+  },
+  "showcases": {
+    "title": "Our Featured Projects",
+    "subtitle": "Explore some of our recent engineering consultancy projects",
+    "viewProject": "View Project",
+    "viewAllProjects": "View All Projects",
+    "project1": {
+      "title": "Commercial Tower Development",
+      "description": "Provided full structural engineering and project management services for this 25-story commercial tower in Addis Ababa.",
+      "category": "Commercial"
+    },
+    "project2": {
+      "title": "Highway Construction Supervision",
+      "description": "Managed quality control and construction supervision for a 120km highway project connecting major regional cities.",
+      "category": "Infrastructure"
+    },
+    "project3": {
+      "title": "Residential Complex Design",
+      "description": "Designed structural systems for a sustainable residential complex with 500 housing units.",
+      "category": "Residential"
+    }
   }
 }
+  
+
+

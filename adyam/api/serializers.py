@@ -1,5 +1,7 @@
 from rest_framework import serializers 
-
+from core.models import (
+    TeamMember,
+)
 
 # serializer classes
 class UserSerializer(serializers.Serializer):
@@ -73,3 +75,4 @@ class UserProfileSerializer(serializers.Serializer):
         instance.bio = validated_data.get('bio', instance.bio)
         instance.save()
         return instance
+    

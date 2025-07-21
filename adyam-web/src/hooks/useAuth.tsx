@@ -5,6 +5,15 @@ interface User {
     id: string;
     name: string;
     email: string;
+    fname?: string;
+    mname?: string;
+    lname?: string;
+    phone?: string;
+    address?: string;
+    city?: string;
+    state?: string;
+    country?: string;
+    zipCode?: string;
     // Add more user fields as needed
 }
 
@@ -16,6 +25,8 @@ interface AuthContextType {
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
+// const CartContext = createContext<{ cart: any[]; addToCart: (item: any) => void; removeFromCart: (itemId: string) => void } | undefined>(undefined);
+
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [user, setUser] = useState<User | null>(null);

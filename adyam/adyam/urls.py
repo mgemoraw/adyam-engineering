@@ -31,6 +31,7 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('notes/', include('notes.urls')),
     path('projects/', include('projects.urls')),
+    path('api/', include('api.urls')),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 if settings.DEBUG:

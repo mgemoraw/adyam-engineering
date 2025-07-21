@@ -71,7 +71,7 @@
     {% endif %}
 
      <!-- Slider Section -->
-    <section class=" py-10 bg-white" id="news">
+    <section class="relative pt-10 bg-white" id="news">
 
       <div class="container mx-auto px-4 max-w-8xl">
         <!-- Optional overlay for readability -->
@@ -338,18 +338,18 @@
             <div class="bg-gray-50 rounded-xl shadow-lg p-8 border border-gray-100">
               <h2 class="text-2xl font-bold text-secondary mb-4 text-center">Our Office Location</h2>
               <h3 class="text-base font-semibold text-primary mb-2 text-center">
-                Bahir Dar Kebele 05 ANRS Housing Appartment Office No 203
+                Bahir Dar Kebele 14, 40 meter road, D.A. Building G23
               </h3>
               <div class="flex justify-center mt-4">
                 <iframe
-                  src="https://www.google.com/maps?q={{ latitude|default:'11.593475' }},{{ longitude|default:'37.389395' }}&hl=es;z=16&amp;output=embed"
+                  src="https://www.google.com/maps?q={{ latitude|default:'11.585044' }},{{ longitude|default:'37.366117' }}&hl=es;z=16&amp;output=embed"
                   width="100%"
                   height="320"
                   class="rounded-lg border-0 shadow"
                   allowfullscreen=""
                   loading="lazy"
                   referrerpolicy="no-referrer-when-downgrade"
-                  title="Adyam Engineering S.C. Head Office"
+                  title="Adyam Head Office"
                 ></iframe>
               </div>
               <div class="mt-4 text-center">
@@ -361,6 +361,36 @@
           </div>
         </div>
       </div>
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+
+<div id="map" style="height: 320px; width: 100%;" class="rounded-lg shadow"></div>
+
+<script>
+  const latitude = {{ latitude|default:'11.585044' }};
+  const longitude = {{ longitude|default:'37.366117' }};
+  const map = L.map('map').setView([latitude, longitude], 16);
+
+  // Tile Layer
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  // Custom Icon
+  const customIcon = L.icon({
+    iconUrl: '/static/icons/location-pin.png', // 🧠 Change to your actual icon path
+    iconSize: [38, 38], // width, height
+    iconAnchor: [19, 38], // point of the icon which will correspond to marker's location
+    popupAnchor: [0, -38] // point from which the popup should open relative to the iconAnchor
+  });
+
+  // Marker with Custom Icon and Popup Label
+  L.marker([latitude, longitude], { icon: customIcon })
+    .addTo(map)
+    .bindPopup('<strong>Adyam Head Office</strong><br>Welcome to our location!')
+    .openPopup();
+</script>
+
     </section>
 
   
@@ -459,5 +489,6 @@
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
   {% block extra_js %}{% endblock %}
+  
 </body>
 </html>

@@ -1,33 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React from 'react';
 import './App.css'
 import { AuthProvider } from './hooks/useAuth'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Login from './pages/manager/Login'
+import ThemeProvider from './hooks/useTheme';
+import Layout from './pages/Layout';
 import i18n from './language/i18n';
-import Navbar from './pages/common/navbar'
+import HomePage from './pages/common/HomePage';
+import { FileUpload } from './components/FileUploads';
 
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <AuthProvider>
-      <BrowserRouter
+      <ThemeProvider>
+        <BrowserRouter
         basename="/"
-      >
-        <Navbar/>
+        >
        
-        <Routes>
+        <Routes >
           
-          <Route path="/login" element={<Login/>} />
-          <Route path="/dashboard" element={<div>Dashboard Page</div>} />
-          <Route path="/" element={<div>Home Page</div>} />
+          <Route path="/" element={<Layout/>}>
+            <Route index element={<HomePage/>} />
+            <Route path="/login" element={<Login/>} />
+            <Route path="/dashboard" element={<div>Dashboard Page</div>} />
+            <Route path="/about" element={<div>Dashboard Page</div>} />
+            <Route path="/services" element={<div>Dashboard Page</div>} />
+            <Route path="/projects" element={<div>Dashboard Page</div>} />
+            <Route path="/blog" element={<div>Dashboard Page</div>} />
+            <Route path="/contact" element={<div>Dashboard Page</div>} />
+            <Route path="/upload" element={<FileUpload/>} />
+          </Route>
+         
 
         </Routes>
           
       </BrowserRouter>
+      </ThemeProvider>
+      
     </AuthProvider>
   );
 }

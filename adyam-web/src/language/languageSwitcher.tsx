@@ -34,7 +34,7 @@ const LanguageSwitcher = () => {
       onBlur={e => (e.currentTarget.style.borderColor = '#ccc')}
     >
       {LANGUAGES.map(lang => (
-      <option key={lang.code} value={lang.code}>
+      <option key={lang.code} value={lang.code} className="w-full hover:border hover:bg-border-b-blue-700">
         {lang.label}
       </option>
       ))}

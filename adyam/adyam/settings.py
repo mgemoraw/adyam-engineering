@@ -25,10 +25,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-zgshcm5s8t)pzzmy-s$i+qu(&w^yfj#21c7b0ur9h=1(y(_$ni'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    '*',
+]
 
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Application definition
 
@@ -40,8 +43,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'rest_framework',
     'core.apps.CoreConfig',
+    'api.apps.ApiConfig',
     'blog.apps.BlogConfig',
     'notes.apps.NotesConfig',
     'projects.apps.ProjectsConfig',
@@ -55,6 +60,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'adyam.urls'
@@ -108,6 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -157,6 +165,17 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'adyamengineering@gmail.com'
 EMAIL_HOST_PASSWORD = 'Adyam@2024'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ]
+}
 
 
 # Jazzmin settings
