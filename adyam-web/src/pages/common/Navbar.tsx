@@ -111,16 +111,16 @@ const Navbar = () => {
             {t("navbar.blogs")}
           </NavLink>
          
-          <NavLink to="/news" className="flex items-center gap-1 text-sm font-semibold text-gray-900  hover:bg-gray-100 hover:border hover:border-b-blue-700">
+          {/* <NavLink to="/news" className="flex items-center gap-1 text-sm font-semibold text-gray-900  hover:bg-gray-100 hover:border hover:border-b-blue-700">
             <FcNews className="h-5 w-5" />
             {t("navbar.news")}
-          </NavLink>
+          </NavLink> */}
 
            
-          <NavLink to="/contact" className="flex items-center gap-1 text-sm font-semibold text-gray-900  hover:bg-gray-100 hover:border hover:border-b-blue-700">
+          {/* <NavLink to="/contact" className="flex items-center gap-1 text-sm font-semibold text-gray-900  hover:bg-gray-100 hover:border hover:border-b-blue-700">
             <PhoneIcon className="h-5 w-5 text-green-600" />
             {t("navbar.contactUs")}
-          </NavLink>
+          </NavLink> */}
 
           <NavLink to="/about" className="flex items-center gap-1 text-sm font-semibold text-gray-900  hover:bg-gray-100 hover:border hover:border-b-blue-700">
             <FcAbout className="h-5 w-5" />

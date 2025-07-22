@@ -1,4 +1,6 @@
 import { useTranslation } from 'react-i18next';
+import "./LanguageSwitcher.css";
+
 
 const LANGUAGES = [
   { code: 'en', label: 'English' },
@@ -21,8 +23,7 @@ const LanguageSwitcher = () => {
       style={{
       padding: '6px 12px',
       borderRadius: '6px',
-      border: '1px solid #ccc',
-      background: '#f9f9f9',
+      background: 'transparent',
       color: '#333',
       fontSize: '1rem',
       marginRight: 8,
@@ -30,12 +31,13 @@ const LanguageSwitcher = () => {
       cursor: 'pointer',
       transition: 'border-color 0.2s',
       }}
+      onMouseOver={e=>(e.currentTarget.style.borderColor="#0078d4")}
       onFocus={e => (e.currentTarget.style.borderColor = '#0078d4')}
       onBlur={e => (e.currentTarget.style.borderColor = '#ccc')}
     >
       {LANGUAGES.map(lang => (
       <option key={lang.code} value={lang.code} className="w-full hover:border hover:bg-border-b-blue-700">
-        {lang.label}
+        {lang.code}
       </option>
       ))}
     </select>

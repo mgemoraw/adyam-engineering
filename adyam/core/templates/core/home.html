@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 
 {% load static %}
+{% load i18n %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{% block title %}Adyam Engineering S.C.{% endblock %}</title>
+  <title>{% translate "Adyam Engineering S.C." %}</title>
   <meta name="description" content="MiCon offers professional civil engineering consultancy services including structural design, project management, and site supervision.">
   <meta name="author" content="MiCon Consultants">
   <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
@@ -71,13 +73,13 @@
     {% endif %}
 
      <!-- Slider Section -->
-    <section class="relative pt-10 bg-white" id="news">
+    <section class="pt-60 bg-white" id="news">
 
       <div class="container mx-auto px-4 max-w-8xl">
         <!-- Optional overlay for readability -->
         {% comment %} <div class="absolute inset-0 bg-black bg-opacity-50"></div> {% endcomment %}
 
-        <h2 class="text-3xl font-bold text-center text-secondary mb-10">Latest News & Insights</h2>
+        <h2 class="relative text-3xl font-bold text-center text-secondary mb-10">Latest News & Insights</h2>
 
         <div class="relative">
 
@@ -111,69 +113,7 @@
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
       </style>
 
-      <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const slider = document.getElementById('news-slider');
-        const dotsContainer = document.getElementById('slider-dots');
-
-        const slideWidth = () => slider?.firstElementChild?.offsetWidth + 16; // 16 = space-x-4
-        const numSlides = slider?.children?.length || 0;
-        const visibleSlides = Math.floor(slider.offsetWidth / slideWidth());
-        const totalDots = Math.max(1, numSlides - visibleSlides + 1);
-
-        // Create dots
-        for (let i = 0; i < totalDots; i++) {
-          const dot = document.createElement('button');
-          dot.className = "w-4 h-4 rounded-full bg-sky-900 border-2 border-sky-900 transition-colors duration-300 focus:outline-none";
-          dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
-          dot.dataset.index = i;
-          dotsContainer.appendChild(dot);
-
-          dot.addEventListener('click', () => {
-            clearInterval(autoSlideInterval); // pause auto-slide on manual click
-            currentIndex = i;
-            scrollToSlide(i);
-            restartAutoSlide();
-          });
-        }
-
-        const dots = dotsContainer.querySelectorAll("button");
-        let currentIndex = 0;
-
-        function scrollToSlide(index) {
-          slider.scrollTo({ left: index * slideWidth(), behavior: 'smooth' });
-          updateDots(index);
-        }
-
-        function updateDots(index) {
-          dots.forEach((dot, idx) => {
-            dot.classList.toggle("bg-sky-900", idx === index);
-          });
-        }
-
-        function autoSlide() {
-          currentIndex = (currentIndex + 1) % totalDots;
-          scrollToSlide(currentIndex);
-        }
-
-        // Auto-slide every 10 seconds
-        let autoSlideInterval = setInterval(autoSlide, 10000);
-
-        function restartAutoSlide() {
-          clearInterval(autoSlideInterval);
-          autoSlideInterval = setInterval(autoSlide, 10000);
-        }
-
-        slider.addEventListener("scroll", () => {
-          const index = Math.round(slider.scrollLeft / slideWidth());
-          currentIndex = index;
-          updateDots(index);
-        });
-
-        // Initial dot state
-        updateDots(0);
-      });
-    </script>
+      <script src="{% static 'js/slider.js' %}"> </script>
     </section>
 
 
@@ -340,7 +280,8 @@
               <h3 class="text-base font-semibold text-primary mb-2 text-center">
                 Bahir Dar Kebele 14, 40 meter road, D.A. Building G23
               </h3>
-              <div class="flex justify-center mt-4">
+              <div id="map" style="height: 320px; width: 100%;" class="z-10 rounded-lg shadow "></div>
+              {% comment %} <div class="flex justify-center mt-4">
                 <iframe
                   src="https://www.google.com/maps?q={{ latitude|default:'11.585044' }},{{ longitude|default:'37.366117' }}&hl=es;z=16&amp;output=embed"
                   width="100%"
@@ -356,7 +297,7 @@
                 <a href="https://www.google.com/maps/search/?api=1&query={{ latitude|default:'11.593475' }},{{ longitude|default:'37.389395' }}" target="_blank" rel="noopener" class="inline-block text-primary font-semibold hover:underline">
                   View on Google Maps
                 </a>
-              </div>
+              </div> {% endcomment %}
             </div>
           </div>
         </div>
@@ -364,32 +305,12 @@
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 
-<div id="map" style="height: 320px; width: 100%;" class="rounded-lg shadow"></div>
+  
 
-<script>
-  const latitude = {{ latitude|default:'11.585044' }};
-  const longitude = {{ longitude|default:'37.366117' }};
-  const map = L.map('map').setView([latitude, longitude], 16);
-
-  // Tile Layer
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(map);
-
-  // Custom Icon
-  const customIcon = L.icon({
-    iconUrl: '/static/icons/location-pin.png', // 🧠 Change to your actual icon path
-    iconSize: [38, 38], // width, height
-    iconAnchor: [19, 38], // point of the icon which will correspond to marker's location
-    popupAnchor: [0, -38] // point from which the popup should open relative to the iconAnchor
-  });
-
-  // Marker with Custom Icon and Popup Label
-  L.marker([latitude, longitude], { icon: customIcon })
-    .addTo(map)
-    .bindPopup('<strong>Adyam Head Office</strong><br>Welcome to our location!')
-    .openPopup();
-</script>
+  <script src="{% static 'js/geolocation.js' %}"> 
+    console.log("Logation....");
+  </script>
+  
 
     </section>
 
@@ -475,7 +396,39 @@
   </section>
 
   
+  <section>
+    <div class="z-20 fixed bottom-20 right-0">
         
+      <a href="tel:+251{{contacts.phone}}" class="flex">
+      <button id="contact" class="bg-blue-500 hover:bg-blue-600 text-white rounded-full p-4 shadow-lg  animate-ring hover:animate-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+        </svg>
+
+      </button>
+        <span class="text-md" >{{contacts.phone}} </span>
+
+    </a>
+
+    <div>
+    <style>
+      @keyframes ring {
+        0% { transform: rotate(0deg); }
+        10% { transform: rotate(-10deg); }
+        20% { transform: rotate(10deg); }
+        30% { transform: rotate(-10deg); }
+        40% { transform: rotate(10deg); }
+        50% { transform: rotate(0deg); }
+        100% { transform: rotate(0deg); }
+      }
+      .animate-ring {
+        animation: ring 2s infinite;
+      }
+    </style>
+    <script> 
+      const contact = document.getElementById('contact');
+    </script>
+  </section>
     
   </main>
 

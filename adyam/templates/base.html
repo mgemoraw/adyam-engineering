@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 {% load static %}
+{% load i18n %}
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,6 +12,7 @@
     <!-- Tailwind CSS for production -->
     {% comment %} <link rel="stylesheet" href="{% static 'css/tailwind.css' %}"/> {% endcomment %}
     {% comment %} <link rel="stylesheet" href="{% static 'css/index.css' %}" > {% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/location_map.css' %}" >
     
     <!-- Tailwind CSS via CDN (for development) -->
     <script src="https://cdn.tailwindcss.com"></script>
