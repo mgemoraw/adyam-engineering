@@ -2,32 +2,30 @@ import axios from 'axios';
 import api from '../api/api';
 
 import {create} from 'zustand';
-import { baseURL, contactAPI } from '../api/endpoints';
+import { baseURL, aboutAPI } from '../api/endpoints';
 
-type ContactState =  {
-    contacts: [];
-    loadContacts: () => void;
+type AboutState =  {
+    info: [];
+    loadInfo: () => void;
     clearError: () => void;
     error: string |null;
     loading: boolean;
 }
-
-
-const useContactStore = create<ContactState>((set) => ({
-    contacts: [],
+const useAboutStore = create<AboutState>((set) => ({
+    info: [],
     loading: false,
     error: null,
 
-    loadContacts: async () => {
+    loadInfo: async () => {
         set({loading: true, error: null});
 
         try {
             // const baseUrl = import.meta.env.VITE_API_URL;
-            const response = await axios.get(`${baseURL}${contactAPI}`, {
+            const response = await api.get(`${baseURL}${aboutAPI}`, {
 
             });
             // console.log("data", response.data.contacts);
-            set({contacts: response.data.contacts, loading: false});
+            set({info: response.data.info, loading: false});
         } catch(error) {
             set({error: `${error}` || 'Something went wrong', loading:false})
         }
@@ -38,4 +36,4 @@ const useContactStore = create<ContactState>((set) => ({
 
 }));
 
-export default useContactStore;
+export default useAboutStore;

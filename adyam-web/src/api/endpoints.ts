@@ -3,12 +3,14 @@ const servicesAPI = "services/";
 const contactMessagesAPI = "contact-messages/";
 const contactAPI = "contacts/";
 const slidersAPI = "sliders/";
+const projectsAPI = "projects/";
 const newsAPI = "news/";
 const vacanciesAPI = "vacancies/";
 const blogPostsAPI = "blog-posts/";
 const messagesAPI = "messages/";
 const emailsAPI = "emails/";
 const teamsAPI = "teams/";
+const aboutAPI = "about/";
 
 
 export {
@@ -23,4 +25,6 @@ export {
     messagesAPI,
     emailsAPI,
     teamsAPI,
+    projectsAPI,
+    aboutAPI,
 }

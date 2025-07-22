@@ -2,32 +2,30 @@ import axios from 'axios';
 import api from '../api/api';
 
 import {create} from 'zustand';
-import { baseURL, contactAPI } from '../api/endpoints';
+import { baseURL, slidersAPI } from '../api/endpoints';
 
-type ContactState =  {
-    contacts: [];
-    loadContacts: () => void;
+type SliderState =  {
+    sliders: [];
+    loadSliders: () => void;
     clearError: () => void;
     error: string |null;
     loading: boolean;
 }
-
-
-const useContactStore = create<ContactState>((set) => ({
-    contacts: [],
+const useSliderStore = create<SliderState>((set) => ({
+    sliders: [],
     loading: false,
     error: null,
 
-    loadContacts: async () => {
+    loadSliders: async () => {
         set({loading: true, error: null});
 
         try {
             // const baseUrl = import.meta.env.VITE_API_URL;
-            const response = await axios.get(`${baseURL}${contactAPI}`, {
+            const response = await api.get(`${baseURL}${slidersAPI}`, {
 
             });
             // console.log("data", response.data.contacts);
-            set({contacts: response.data.contacts, loading: false});
+            set({sliders: response.data.sliders, loading: false});
         } catch(error) {
             set({error: `${error}` || 'Something went wrong', loading:false})
         }
@@ -38,4 +36,4 @@ const useContactStore = create<ContactState>((set) => ({
 
 }));
 
-export default useContactStore;
+export default useSliderStore;

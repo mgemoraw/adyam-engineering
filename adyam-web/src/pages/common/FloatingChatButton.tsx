@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 
 import {PhoneIcon, XMarkIcon, ChatBubbleLeftRightIcon, ChatBubbleLeftIcon} from '@heroicons/react/24/outline';
+import useMessagesStore from '../../hookStores/messageStore';
 
 
 const adminPhone = "+251123456789";
@@ -10,9 +11,10 @@ const adminEmail = "info@adyamengineering.com";
 const FloatingChatButton: React.FC = ({contacts}:any) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showContactForm, setShowContactForm] = useState(false);
+  const {status, error, clearError, sendContactMessage} = useMessagesStore();
 
   // Simple contact form state
-  const [form, setForm] = useState({ name: '', phone: '', email: '', message: '' });
+  const [form, setForm] = useState({ name: '', phone: '', email: '', body: '' });
   const [submitted, setSubmitted] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -24,16 +26,28 @@ const FloatingChatButton: React.FC = ({contacts}:any) => {
         // Logic to open chat popup can be added here
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Here you would send the form data to your backend or email service
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setShowContactForm(false);
-      setForm({ name: '', phone: '', email: '', message: '' });
-      setIsOpen(false);
-    }, 2000);
+    const handleSubmit = async(e: React.FormEvent)  => {
+      e.preventDefault();
+
+    
+      // Here you would send the form data to your backend or email service
+      if (form.name !== null || form.email !== null || form.phone !== null || form.body !== null) {
+        sendContactMessage(form);
+        console.log("status: ", status);
+        console.log("error: ", error);
+        
+
+        // finaly clear error
+        clearError();
+      }
+
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setShowContactForm(false);
+        setForm({ name: '', phone: '', email: '', body: '' });
+        setIsOpen(false);
+      }, 2000);
   };
 
     // Render the floating chat button and popup
@@ -161,8 +175,8 @@ const FloatingChatButton: React.FC = ({contacts}:any) => {
               <textarea
                 name="message"
                 placeholder="Your Message"
-                value={form.message}
-                onChange={handleInputChange}
+                value={form.body}
+                onChange={(e)=>setForm({...form, body: e.target.value})}
                 required
                 rows={3}
                 style={{ padding: "0.5rem", borderRadius: "0.5rem", border: "1px solid #ccc" }}
