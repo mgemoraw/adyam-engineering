@@ -29,6 +29,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
+    'www.adyamengineering.com/api',
+    'http://localhost:5173',
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True

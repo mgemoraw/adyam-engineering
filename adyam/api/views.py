@@ -61,7 +61,9 @@ class ContactMessageViewSet(viewsets.ModelViewSet):
         """
         Assign different permissions for different actions.
         """
-        if self.action in ['create', 'update', 'partial_update', 'destroy']:
+        if self.action in ['create']:
+            permission_classes = [permissions.AllowAny]
+        elif self.action in ['partial_update', 'destroy', 'update', 'list']:
             permission_classes = [permissions.IsAuthenticated]
         else:
             permission_classes = [permissions.IsAuthenticatedOrReadOnly]
