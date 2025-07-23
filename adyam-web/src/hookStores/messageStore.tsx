@@ -2,7 +2,7 @@ import axios from 'axios';
 import api from '../api/api';
 
 import {create} from 'zustand';
-import { baseURL, messagesAPI } from '../api/endpoints';
+import { baseURL, contactMessagesAPI, messagesAPI } from '../api/endpoints';
 import type { ContactMessage, Message } from '../models/models';
 
 
@@ -59,10 +59,11 @@ const useMessagesStore = create<MessageState>((set) => ({
 
         try {
             // const baseUrl = import.meta.env.VITE_API_URL;
-            await api.post(`${baseURL}${messagesAPI}`, {
-                message,
+            const response = await api.post(`${baseURL}${contactMessagesAPI}`, message,{
+               
+                withCredentials: false,
             });
-            // console.log("data", response.data.contacts);
+            console.log("data", response.data);
             set({status: "success", loading: false});
         } catch(error) {
             set({error: `${error}` || 'Something went wrong', loading:false, status: 'failed'})

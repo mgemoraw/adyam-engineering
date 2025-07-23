@@ -14,7 +14,7 @@ const FloatingChatButton: React.FC = ({contacts}:any) => {
   const {status, error, clearError, sendContactMessage} = useMessagesStore();
 
   // Simple contact form state
-  const [form, setForm] = useState({ name: '', phone: '', email: '', body: '' });
+  const [form, setForm] = useState({ name: '', phone: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -31,7 +31,7 @@ const FloatingChatButton: React.FC = ({contacts}:any) => {
 
     
       // Here you would send the form data to your backend or email service
-      if (form.name !== null || form.email !== null || form.phone !== null || form.body !== null) {
+      if (form.name !== null || form.email !== null || form.phone !== null || form.message !== null) {
         sendContactMessage(form);
         console.log("status: ", status);
         console.log("error: ", error);
@@ -45,7 +45,7 @@ const FloatingChatButton: React.FC = ({contacts}:any) => {
       setTimeout(() => {
         setSubmitted(false);
         setShowContactForm(false);
-        setForm({ name: '', phone: '', email: '', body: '' });
+        setForm({ name: '', phone: '', email: '', message: '' });
         setIsOpen(false);
       }, 2000);
   };
@@ -175,8 +175,8 @@ const FloatingChatButton: React.FC = ({contacts}:any) => {
               <textarea
                 name="message"
                 placeholder="Your Message"
-                value={form.body}
-                onChange={(e)=>setForm({...form, body: e.target.value})}
+                value={form.message}
+                onChange={(e)=>setForm({...form, message: e.target.value})}
                 required
                 rows={3}
                 style={{ padding: "0.5rem", borderRadius: "0.5rem", border: "1px solid #ccc" }}
