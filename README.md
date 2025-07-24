@@ -5,4 +5,4 @@ This is a company website developed using django and react.
 
 ![Adyam Home Amharic](adyam-home-am.png)
 
-webiste address <a href="www.adyamengineering.com">www.adyamengineering.com</a>
+[Adyam Engineering Website](www.adyamengineering.com)
