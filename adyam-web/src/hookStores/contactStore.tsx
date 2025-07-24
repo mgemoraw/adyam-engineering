@@ -5,7 +5,7 @@ import {create} from 'zustand';
 import { baseURL, contactAPI } from '../api/endpoints';
 
 type ContactState =  {
-    contacts: [];
+    contacts: Object;
     loadContacts: () => void;
     clearError: () => void;
     error: string |null;
@@ -14,7 +14,7 @@ type ContactState =  {
 
 
 const useContactStore = create<ContactState>((set) => ({
-    contacts: [],
+    contacts: {},
     loading: false,
     error: null,
 
@@ -26,7 +26,7 @@ const useContactStore = create<ContactState>((set) => ({
             const response = await axios.get(`${baseURL}${contactAPI}`, {
 
             });
-            // console.log("data", response.data.contacts);
+            console.log("data", response.data.contacts);
             set({contacts: response.data.contacts, loading: false});
         } catch(error) {
             set({error: `${error}` || 'Something went wrong', loading:false})

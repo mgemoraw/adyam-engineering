@@ -20,13 +20,11 @@ import TestimonialCarousel from './TestimonialCarousel';
 import ProjectShowcase from './ProjectShowcase';
 import './HomePage.css';
 import { useTheme } from '../../hooks/useTheme';
-
-import serviceImage from '../../assets/images/engineering-services1.webp';
-import infrastructureImage from '../../assets/images/quality-infrastructure.webp';
 import StatsBanner from './StatsBanner';
 import FloatingChatButton from './FloatingChatButton';
 import Demo from '../shared/Demo';
 import useContactStore from '../../hookStores/contactStore';
+
 
 
 const HomePage = () => {
