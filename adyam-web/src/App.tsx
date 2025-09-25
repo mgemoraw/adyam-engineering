@@ -9,6 +9,7 @@ import i18n from './language/i18n';
 import HomePage from './pages/common/HomePage';
 import { FileUpload } from './components/FileUploads';
 import TestPage from './pages/testPages/ToDo';
+import AboutPage from './pages/common/AboutPage';
 
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
             <Route index element={<HomePage/>} />
             <Route path="/login" element={<Login/>} />
             <Route path="/dashboard" element={<div>Dashboard Page</div>} />
-            <Route path="/about" element={<div>Dashboard Page</div>} />
+            <Route path="/about" element={<AboutPage/>} />
             <Route path="/services" element={<div>Dashboard Page</div>} />
             <Route path="/projects" element={<TestPage/>} />
             <Route path="/blog" element={<div>Dashboard Page</div>} />
