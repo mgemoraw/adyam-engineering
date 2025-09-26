@@ -3,7 +3,6 @@
 {% load static %}
 {% load i18n %}
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -12,9 +11,9 @@
   <meta name="description" content="MiCon offers professional civil engineering consultancy services including structural design, project management, and site supervision.">
   <meta name="author" content="MiCon Consultants">
   <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
-
   
-
+  <!-- Inter Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS via CDN (for development) -->
   {% comment %} <script src="https://cdn.tailwindcss.com"></script> {% endcomment %}
@@ -38,16 +37,16 @@
   </script>
    {% endcomment %}
 
-  <!-- Inter Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
   {% block extra_head %}{% endblock %}
+  
 </head>
 <body class="font-inter bg-gray-50">
   {% block navbar %}
     {% include 'core/navbar.html' %}
   {% endblock %}
 
+
+  <!-- Main Content -->
   {% block content %}
  
 
@@ -79,7 +78,7 @@
         <!-- Optional overlay for readability -->
         {% comment %} <div class="absolute inset-0 bg-black bg-opacity-50"></div> {% endcomment %}
 
-        <h2 class="relative text-3xl font-bold text-center text-secondary mb-10">Latest News & Insights</h2>
+        <h2 class="relative text-3xl font-bold text-center text-secondary m-10">Latest News & Insights</h2>
 
         <div class="relative">
 

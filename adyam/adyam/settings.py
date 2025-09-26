@@ -1,3 +1,4 @@
+# settings.py
 """
 Django settings for adyam project.
 
@@ -129,6 +130,14 @@ USE_I18N = True
 
 USE_TZ = True
 
+
+USE_I18N = True
+USE_L10N = True
+# If Django 4.0 or newer, USE_TZ must be True for localization to work
+LANGUAGES = [
+    ('en', 'English'),
+    ('am', 'Amharic'),
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
