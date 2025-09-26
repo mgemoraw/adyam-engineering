@@ -20,13 +20,11 @@ import TestimonialCarousel from './TestimonialCarousel';
 import ProjectShowcase from './ProjectShowcase';
 import './HomePage.css';
 import { useTheme } from '../../hooks/useTheme';
-
-import serviceImage from '../../assets/images/engineering-services1.webp';
-import infrastructureImage from '../../assets/images/quality-infrastructure.webp';
 import StatsBanner from './StatsBanner';
 import FloatingChatButton from './FloatingChatButton';
 import Demo from '../shared/Demo';
 import useContactStore from '../../hookStores/contactStore';
+
 
 
 const HomePage = () => {
@@ -68,9 +66,9 @@ const HomePage = () => {
   ];
 
   const stats = [
-    { value: 200, label: t('stats.projectsCompleted') },
-    { value: 50, label: t('stats.clientsServed') },
-    { value: 25, label: t('stats.yearsExperience') },
+    { value: 3, label: t('stats.projectsCompleted') },
+    { value: 5, label: t('stats.clientsServed') },
+    { value: 1, label: t('stats.yearsExperience') },
     { value: 100, label: t('stats.clientSatisfaction') }
   ];
 
@@ -133,10 +131,13 @@ const HomePage = () => {
           <img src="https://cdn.prod.website-files.com/62196607bf1b46c300301846/6568adc6401542df279ea6c3_bb8sa1slxdbdyjqqb5mn.webp" alt="Our Team" />
         </div>
         <div className="about-content">
-          <h2>{t('home.aboutTitle')}</h2>
-          <p>{t('home.aboutText1')}</p>
-          <p>{t('home.aboutText2')}</p>
+          <h2 className="text-center font-bold text-sky-800">{t('home.aboutTitle')}</h2>
+          <p className="text-start">{t('home.aboutText1')}</p>
+          <p className='text-start'>{t('home.aboutText2')}</p>
+          <p className='text-start'>{t('home.aboutText3')}</p>
+          
           <ul className="about-features">
+            <h3 className="text-left text-xl font-bold pb-3 text-sky-800">Features</h3>
             <li>
               <CheckBadgeIcon width={40} className="h-6 w-6" />
               {t('home.aboutFeature1')}
@@ -177,7 +178,7 @@ const HomePage = () => {
       </section>
 
       {/* Stats Section */}
-      <h2 style={{ alignSelf: 'left'}}>Numbers don't lie</h2>
+      {/* <h2 className="text-left font-bold text-xl">Figures</h2> */}
       <StatsBanner stats={stats} />
 
       {/* Projects Showcase */}

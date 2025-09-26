@@ -6,6 +6,7 @@ import Navbar from './common/Navbar';
 
 
 
+
 const Layout = () => {
     return (
         <div className="layout">

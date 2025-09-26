@@ -72,14 +72,41 @@
     "testimonials": "What Our Clients Say",
     "readMore": "Read More",
 
+    "features": [
+      {
+        "feature": "Expertise and Experience", 
+        "description": "Our team consists of highly skilled professionals with extensive experience getInTouch in the engineering field. We bring a wealth of knowledge and expertise to every project, ensuring that we deliver the best possible results for our clients."},
+      {
+        "feature": "Innovation and Technology",  
+        "description":  "We are committed to staying at the forefront of engineering technology and methodologies. Our innovative approach allows us to tackle complex challenges and deliver cutting-edge solutions that meet the evolving needs of our clients."
+      },
+      {
+        "feature": "Service Quality ",  
+        "description":   "Quality is at the heart of everything we do. We adhere to the highest standards of quality assurance and control, ensuring that every project we undertake meets or exceeds industry standards and client expectations."
+      },
+      {
+        "feature": "Sustainability",  
+        "description":   "We are dedicated to promoting sustainable practices in all our projects. Our focus on sustainability ensures that we minimize environmental impact while delivering efficient and effective engineering solutions."
+      },
+       {
+        "feature": "Client-Centric Approach",  
+        "description":   "Our clients are at the center of everything we do. We take the time to understand your unique needs and challenges, providing personalized service and support throughout the project lifecycle. Our goal is to build lasting relationships based on trust and mutual success."
+      }
+
+    ],
+
     "aboutFeature1": "Expertise and Experience",
     "aboutFeature1Desc": "Our team consists of highly skilled professionals with extensive experience getInTouch in the engineering field. We bring a wealth of knowledge and expertise to every project, ensuring that we deliver the best possible results for our clients.",
+
     "aboutFeature2": "Innovation and Technology",  
     "aboutFeature2Desc": "We are committed to staying at the forefront of engineering technology and methodologies. Our innovative approach allows us to tackle complex challenges and deliver cutting-edge solutions that meet the evolving needs of our clients.",
+
     "aboutFeature3": "Service Quality ",
     "aboutFeature3Desc": "Quality is at the heart of everything we do. We adhere to the highest standards of quality assurance and control, ensuring that every project we undertake meets or exceeds industry standards and client expectations.",
+
     "aboutFeature4": "Sustainability",
     "aboutFeature4Desc": "We are dedicated to promoting sustainable practices in all our projects. Our focus on sustainability ensures that we minimize environmental impact while delivering efficient and effective engineering solutions.",
+
     "aboutFeature5": "Client-Centric Approach",
     "aboutFeature5Desc": "Our clients are at the center of everything we do. We take the time to understand your unique needs and challenges, providing personalized service and support throughout the project lifecycle. Our goal is to build lasting relationships based on trust and mutual success.",
 
@@ -105,10 +132,8 @@
     "ctaSubtitle": "Let's discuss how our expertise can bring your next civil engineering project to life.!",
     "getReadyDesc": "At Adyam Engineering, we are ready to help you building your future. Whether you are planning a new construction project or need expert consultancy services, our team is here to assist you every step of the way.",
     "getFreeConsultation": "Get Free Consultation"
-
-    
-    
   },
+  
   "stats": {
     "projectsCompleted": "Projects Completed",
     "clientsServed": "Clients Served",
