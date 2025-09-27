@@ -10,6 +10,7 @@ import HomePage from './pages/common/HomePage';
 import { FileUpload } from './components/FileUploads';
 import TestPage from './pages/testPages/ToDo';
 import AboutPage from './pages/common/AboutPage';
+import ServicesPage from './pages/common/ServicesPage';
 
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
             <Route path="/login" element={<Login/>} />
             <Route path="/dashboard" element={<div>Dashboard Page</div>} />
             <Route path="/about" element={<AboutPage/>} />
-            <Route path="/services" element={<div>Dashboard Page</div>} />
+            <Route path="/services" element={<ServicesPage/>} />
             <Route path="/projects" element={<TestPage/>} />
             <Route path="/blog" element={<div>Dashboard Page</div>} />
             <Route path="/contact" element={<div>Dashboard Page</div>} />

@@ -24,6 +24,7 @@ import StatsBanner from './StatsBanner';
 import FloatingChatButton from './FloatingChatButton';
 import Demo from '../shared/Demo';
 import useContactStore from '../../hookStores/contactStore';
+import NewsSlider from '../news/NewsSlider';
 
 
 
@@ -123,6 +124,11 @@ const HomePage = () => {
       </section>
 
       {/* <Demo /> */}
+
+      
+      {/* News Section (Slider) */}
+      <NewsSlider />
+
 
       {/* About Section */}
       <section className="about-section">
