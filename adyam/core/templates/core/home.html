@@ -1,448 +1,190 @@
-{% extends 'base.html' %}
-
+{% extends "base.html" %}
 {% load static %}
 {% load i18n %}
 
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{% translate "Adyam Engineering S.C." %}</title>
-  <meta name="description" content="MiCon offers professional civil engineering consultancy services including structural design, project management, and site supervision.">
-  <meta name="author" content="MiCon Consultants">
-  <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
-  
-  <!-- Inter Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+{% block title %}
+  {% trans "Adyam Engineering S.C." %}
+{% endblock %}
 
-  <!-- Tailwind CSS via CDN (for development) -->
-  {% comment %} <script src="https://cdn.tailwindcss.com"></script> {% endcomment %}
+{% block content %}
 
+<!-- =====================================================
+ TOP HEADER SECTION
+===================================================== -->
+<section id="top-header">
+{% include "core/top_header.html" %}
+</section>
 
-  {% comment %} <script>
-    import tailwindcss from 'tailwindcss';
-    tailwindcss.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#721616',
-            secondary: '#1a365d',
-          },
-          fontFamily: {
-            inter: ['Inter', 'sans-serif'],
-          },
-        }
-      }
-    }
-  </script>
-   {% endcomment %}
-
-  {% block extra_head %}{% endblock %}
-  
-</head>
-<body class="font-inter bg-gray-50">
-  {% block navbar %}
-    {% include 'core/navbar.html' %}
-  {% endblock %}
+<!-- =====================================================
+ HAVING NAVBAR SECTION
+===================================================== -->
+<section id="navbar">
+{% include 'core/navbar.html'%}
+</section>
 
 
-  <!-- Main Content -->
-  {% block content %}
- 
+<!-- =====================================================
+ HERO SECTION
+===================================================== -->
+<section id="hero">
+  {% include "core/hero_slider.html" %}
+</section>
 
-  {% block hero %}
-    <!-- Hero Section -->
-    {% include "core/hero_slider.html" %}
-  {% endblock hero%}
+<!-- =====================================================
+ FLASH MESSAGES
+===================================================== -->
+{% if messages %}
+  <div class="container mx-auto px-4 mt-6">
+    {% for message in messages %}
+      <div class="mb-4 p-4 rounded-lg border-l-4
+        {% if message.tags == 'success' %}bg-green-100 border-green-500 text-green-800{% endif %}
+        {% if message.tags == 'error' %}bg-red-100 border-red-500 text-red-800{% endif %}
+      ">
+        {{ message }}
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
 
+<!-- =====================================================
+ NEWS & INSIGHTS
+===================================================== -->
+<section id="news" class="py-20 bg-white">
+  <div class="container mx-auto px-4 max-w-7xl">
+    <h2 class="text-3xl font-bold text-center text-secondary mb-12">
+      {% trans "Latest News & Insights" %}
+    </h2>
 
-
-  <main>
-
-    {% if messages %}
-      <script> 
-        <div class="mt-8">
-          {% for message in messages %}
-            showNotification("{{ message }}", "{{ message.tags }}");
-            <p class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4">{{ message }}</p>
-          {% endfor %}
-        </div>
-      </script>
-      
-    {% endif %}
-
-     <!-- Slider Section -->
-    <section class="pt-60 bg-white" id="news">
-    
-      <div class="container mx-auto px-4 max-w-8xl">
-        <!-- Optional overlay for readability -->
-        {% comment %} <div class="absolute inset-0 bg-black bg-opacity-50"></div> {% endcomment %}
-
-        <h2 class="relative text-3xl font-bold text-center text-secondary m-10">Latest News & Insights</h2>
-
-        <div class="relative">
-
-          <!-- Slider Wrapper -->
-          <div id="news-slider" class="flex overflow-x-auto space-x-4 pb-4 scrollbar-hide snap-x snap-mandatory scroll-smooth ">
-
-            
-            {% for slider in sliders %}
-              <div class="relative w-[280px] sm:w-[320px] md:w-[360px] flex-shrink-0 snap-center rounded-lg shadow-md group overflow-hidden">
-                {% if slider.image %}
-                  <img src="{{ slider.image.url }}" alt="{{ slider.title }}"
-                      class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300">
-                  <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-3 opacity-50 group-hover:opacity-100 transition-opacity duration-300">
-                    <h3 class="text-base font-semibold">{{ slider.title }}</h3>
-                    <a href="{%url 'core:service-detail' slider.id %}" class="text-sm mt-1 inline-block bg-primary text-white px-3 py-1 rounded hover:bg-red-800 transition duration-300">Read More</a>
-                  </div>
-                {% else %}
-                  <div class="w-full h-100 bg-gray-200"></div>
-                {% endif %}
-              </div>
-            {% endfor %}
+    <div id="news-slider" class="flex gap-6 overflow-x-auto snap-x scroll-smooth pb-6">
+      {% for slider in sliders %}
+        <article class="w-[320px] snap-center flex-shrink-0 rounded-xl overflow-hidden shadow hover:shadow-lg transition">
+          <img
+            src="{{ slider.image.url }}"
+            alt="{{ slider.title }}"
+            class="h-56 w-full object-cover hover:scale-105 transition-transform"
+          >
+          <div class="p-4 bg-black/70 text-white">
+            <h3 class="font-semibold">{{ slider.title }}</h3>
+            <a
+              href="{% url 'core:service-detail' slider.id %}"
+              class="inline-block mt-2 text-sm text-primary font-semibold"
+            >
+              {% trans "Read More →" %}
+            </a>
           </div>
+        </article>
+      {% empty %}
+        <p class="text-center text-gray-500">
+          {% trans "No news available." %}
+        </p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
 
-          <!-- Slider Dots -->
-          <div class="w-lg flex justify-center items-center mt-4 space-x-2 rounded-xl" id="slider-dots"></div>
-        </div>
+<!-- =====================================================
+ SERVICES
+===================================================== -->
+<section id="services" class="py-20 bg-gray-50">
+  <div class="container mx-auto px-4 max-w-7xl">
+    <h2 class="text-3xl font-bold text-center text-secondary mb-12">
+      {% trans "Our Core Services" %}
+    </h2>
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+      {% for service in services %}
+        <article class="bg-white rounded-xl shadow p-8 hover:shadow-lg transition">
+          {% if service.image %}
+            <img src="{{ service.image.url }}" alt="{{ service.title }}" class="h-16 mb-4">
+          {% endif %}
+          <h3 class="text-xl font-bold text-secondary mb-2">{{ service.title }}</h3>
+          <p class="text-gray-600 mb-4">
+            {{ service.description|truncatewords:25 }}
+          </p>
+          <a
+            href="{% url 'core:service-detail' service.id %}"
+            class="text-primary font-semibold"
+          >
+            {% trans "Learn More →" %}
+          </a>
+        </article>
+      {% empty %}
+        <p class="col-span-full text-center text-gray-500">
+          {% trans "No services available." %}
+        </p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+ ACHIEVEMENTS
+===================================================== -->
+<section id="achievements" class="py-20 bg-white">
+  <div class="container mx-auto px-4 max-w-6xl">
+    <h2 class="text-3xl font-bold text-center text-secondary mb-12">
+      {% trans "Our Achievements" %}
+    </h2>
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      {% include "core/achievement_card.html" with icon="projects.svg" label="Projects Completed" value="120" %}
+      {% include "core/achievement_card.html" with icon="clients.svg" label="Happy Clients" value="75" %}
+      {% include "core/achievement_card.html" with icon="staff.svg" label="Team Members" value="30" %}
+      {% include "core/achievement_card.html" with icon="experience.svg" label="Years of Experience" value="15" %}
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+ WHY CHOOSE US
+===================================================== -->
+<section class="py-20 bg-gray-50">
+  <div class="container mx-auto px-4 max-w-6xl text-center">
+    <h2 class="text-3xl font-bold text-secondary mb-12">
+      {% trans "Why Choose Adyam Engineering?" %}
+    </h2>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-white rounded-xl shadow p-6">
+        <div class="text-4xl mb-3">🚀</div>
+        <h3 class="font-semibold mb-2">{% trans "Innovation & Expertise" %}</h3>
+        <p class="text-gray-600">{% trans "Cutting-edge engineering solutions." %}</p>
       </div>
 
-      <style>
-        .scrollbar-hide::-webkit-scrollbar { display: none; }
-        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-      </style>
-
-      <script src="{% static 'js/slider.js' %}"> </script>
-    </section>
-
-
- 
-
-    <!-- Services Section -->
-    <section class="py-6 bg-gray-50" id="services">
-      
-
-      <h2 class="text-3xl font-bold text-center text-secondary mb-12">Our Core Services</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {% for service in services %}
-        
-          <div class="bg-white p-8 rounded-lg shadow-md mb-8 hover:shadow-lg transition-shadow duration-300">
-            
-            <div class="text-primary mb-4">
-              {% if service.image %}
-              <img src="{{ service.image.url }}" alt="{{ service.title }}" width="80">
-              {% endif %}
-            </div>
-            <h2 class="text-2xl font-bold text-secondary mb-4">{{ service.title }}</h2>
-
-            <p class="text-gray-600 mb-6">{{ service.description }}</p>
-           
-            {% if service.id %}
-            <a href="{% url 'core:service-detail' service.id %}" class="text-primary font-medium hover:underline">Read More → </a>
-            {% endif %}
-            
-          </div>
-           {% empty %}
-          <p class="text-gray-500 text-center">No services available at the moment.</p>
-        {% endfor %}
+      <div class="bg-white rounded-xl shadow p-6">
+        <div class="text-4xl mb-3">🌍</div>
+        <h3 class="font-semibold mb-2">{% trans "Sustainable Solutions" %}</h3>
+        <p class="text-gray-600">{% trans "Environmentally responsible designs." %}</p>
       </div>
-       <!-- class="w-full h-auto rounded-lg mb-4" -->
-        
-    </section>
 
-    <!-- Achievements Animated Counters Section -->
-    <section class="py-16 bg-white" id="achievements">
-      <div class="container mx-auto px-4 max-w-6xl">
-        <h2 class="text-3xl font-bold text-center text-secondary mb-12">Our Achievements</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          <div class="bg-gray-50 rounded-lg shadow-md p-8 flex flex-col items-center">
-            <div class="text-5xl text-primary mb-2">
-              <svg class="inline w-12 h-12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3"></path><circle cx="12" cy="12" r="10"></circle></svg>
-            </div>
-            <div class="text-4xl font-bold text-secondary counter" data-target="120">0</div>
-            <div class="text-lg text-gray-600 mt-2">Projects Completed</div>
-          </div>
-          
-          <div class="bg-gray-50 rounded-lg shadow-md p-8 flex flex-col items-center">
-            <div class="text-5xl text-primary mb-2">
-              <img src="{%static 'icons/customer.png' %}" class="inline w-12 h-12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 20h5v-2a4 4 0 0 0-3-3.87"></path><circle cx="9" cy="7" r="4"></circle><path d="M3 21v-2a4 4 0 0 1 3-3.87"></path></img>
-            </div>
-            <div class="text-4xl font-bold text-secondary counter" data-target="75">0</div>
-            <div class="text-lg text-gray-600 mt-2">Happy Clients</div>
-          </div>
-          
-          <div class="bg-gray-50 rounded-lg shadow-md p-8 flex flex-col items-center">
-            <div class="text-5xl text-primary mb-2">
-              <img src="{%static 'icons/staff.png' %}"  class="inline w-12 h-12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-3-3.87"></path><circle cx="12" cy="7" r="4"></circle><path d="M4 21v-2a4 4 0 0 1 3-3.87"></path></img>
-            </div>
-            <div class="text-4xl font-bold text-secondary counter" data-target="30">0</div>
-            <div class="text-lg text-gray-600 mt-2">Team Members</div>
-          </div>
-
-          <div class="bg-gray-50 rounded-lg shadow-md p-8 flex flex-col items-center">
-            <div class="text-5xl text-primary mb-2">
-              <img src="{%static 'icons/experience.png' %}"  class="inline w-12 h-12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20l9-5-9-5-9 5 9 5z"></path><path d="M12 12V4"></path></img>
-            </div>
-            <div class="text-4xl font-bold text-secondary counter" data-target="15">0</div>
-            <div class="text-lg text-gray-600 mt-2">Years of Experience</div>
-          </div>
-        </div>
-      </div>
-      <script>
-        // Animated Counter on Scroll
-        document.addEventListener("DOMContentLoaded", function () {
-          let animated = false;
-          function animateCounters() {
-            if (animated) return;
-            const section = document.getElementById('achievements');
-            const rect = section.getBoundingClientRect();
-            if (rect.top < window.innerHeight - 100) {
-              document.querySelectorAll('.counter').forEach(counter => {
-                const updateCount = () => {
-                  const target = +counter.getAttribute('data-target');
-                  const count = +counter.innerText;
-                  const increment = Math.ceil(target / 60);
-                  if (count < target) {
-                    counter.innerText = count + increment > target ? target : count + increment;
-                    setTimeout(updateCount, 20);
-                  } else {
-                    counter.innerText = target;
-                  }
-                };
-                updateCount();
-              });
-              animated = true;
-            }
-          }
-          window.addEventListener('scroll', animateCounters);
-          animateCounters();
-        });
-      </script>
-    </section>
-
-    
-    <!-- why you choose use -->
-    <section class="py-2 bg-gray-50">
-    <div class="container mx-auto px-4 max-w-6xl text-center">
-      <h2 class="text-3xl font-bold text-secondary mb-12">Why Choose Adyam Engineering?</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-white rounded-lg shadow-md p-6">
-          <div class="text-4xl text-primary mb-4">🚀</div>
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Innovation & Expertise</h3>
-          <p class="text-gray-600">Leveraging cutting-edge technologies and deep industry knowledge to deliver optimal solutions.</p>
-        </div>
-        <div class="bg-white rounded-lg shadow-md p-6">
-          <div class="text-4xl text-primary mb-4">🌍</div>
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Sustainable Solutions</h3>
-          <p class="text-gray-600">Committed to environmentally responsible practices and long-term viability in every project.</p>
-        </div>
-        <div class="bg-white rounded-lg shadow-md p-6">
-          <div class="text-4xl text-primary mb-4">🤝</div>
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Client-Centric Approach</h3>
-          <p class="text-gray-600">Your vision is our mission. We collaborate closely to ensure your project goals are met and exceeded.</p>
-        </div>
+      <div class="bg-white rounded-xl shadow p-6">
+        <div class="text-4xl mb-3">🤝</div>
+        <h3 class="font-semibold mb-2">{% trans "Client-Centric Approach" %}</h3>
+        <p class="text-gray-600">{% trans "Your goals are our priority." %}</p>
       </div>
     </div>
-  </section>
-
- 
-    <!-- Our Teams & Location Side by Side -->
-    <section class="py-16 bg-white" id="team">
-      <div class="container mx-auto px-4 max-w-6xl">
-        <h2 class="text-3xl font-bold text-center text-secondary mb-12">Meet Our Team Members</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-          <!-- Team Members List -->
-          <div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-              {% for team_member in teams %}
-                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center p-8 border border-gray-100">
-                  <div class="w-32 h-32 mb-4 rounded-full overflow-hidden border-4 border-primary shadow">
-                    <img src="{{ team_member.image.url }}" alt="{{ team_member.name }}" class="w-full h-full object-cover">
-                  </div>
-                  <h3 class="text-lg font-bold text-secondary mt-2">{{ team_member.name }}</h3>
-                  <p class="text-primary font-semibold mb-1">{{ team_member.position }}</p>
-                  <p class="text-gray-500 text-center text-sm mt-2">{{ team_member.bio }}</p>
-                  {% if team_member.linkedin %}
-                    <a href="{{ team_member.linkedin }}" target="_blank" rel="noopener" class="mt-3 inline-flex items-center text-blue-700 hover:text-blue-900 transition">
-                      <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.29c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76 1.75.79 1.75 1.76-.78 1.76-1.75 1.76zm13.5 10.29h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.17-1.73 2.39v4.58h-3v-9h2.89v1.23h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.59v4.74z"/></svg>
-                      LinkedIn
-                    </a>
-                  {% endif %}
-                </div>
-              {% empty %}
-                <p class="text-gray-500 text-center">No team members available at the moment.</p>
-              {% endfor %}
-            </div>
-          </div>
-          <!-- Location Map (Isolated, Recommended) -->
-          <div>
-            <div class="bg-gray-50 rounded-xl shadow-lg p-8 border border-gray-100">
-              <h2 class="text-2xl font-bold text-secondary mb-4 text-center">Our Office Location</h2>
-              <h3 class="text-base font-semibold text-primary mb-2 text-center">
-                Bahir Dar Kebele 14, 40 meter road, D.A. Building G23
-              </h3>
-              <div id="map" style="height: 320px; width: 100%;" class="z-10 rounded-lg shadow "></div>
-              {% comment %} <div class="flex justify-center mt-4">
-                <iframe
-                  src="https://www.google.com/maps?q={{ latitude|default:'11.585044' }},{{ longitude|default:'37.366117' }}&hl=es;z=16&amp;output=embed"
-                  width="100%"
-                  height="320"
-                  class="rounded-lg border-0 shadow"
-                  allowfullscreen=""
-                  loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade"
-                  title="Adyam Head Office"
-                ></iframe>
-              </div>
-              <div class="mt-4 text-center">
-                <a href="https://www.google.com/maps/search/?api=1&query={{ latitude|default:'11.593475' }},{{ longitude|default:'37.389395' }}" target="_blank" rel="noopener" class="inline-block text-primary font-semibold hover:underline">
-                  View on Google Maps
-                </a>
-              </div> {% endcomment %}
-            </div>
-          </div>
-        </div>
-      </div>
-      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
-
-  
-
-  <script src="{% static 'js/geolocation.js' %}"> 
-    console.log("Logation....");
-  </script>
-  
-
-    </section>
-
-  
-  {% comment %} bottom contact section {% endcomment %}
-  <section class="relative bg-primary text-white py-6 overflow-hidden">
-  <!-- Background Illustration -->
-  <div class="absolute inset-0 -z-10">
-    <svg viewBox="0 0 1440 600" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full object-cover">
-      <rect width="1440" height="600" fill="#721616" />
-      <!-- Cranes -->
-      <path d="M200 300h10v200h-10zM205 300h50v10h-50zM255 300l-25-40h-50l-25 40z" fill="#fff" opacity="0.2"/>
-      <path d="M600 280h10v220h-10zM605 280h60v10h-60zM665 280l-30-50h-60l-30 50z" fill="#fff" opacity="0.2"/>
-      <!-- Buildings -->
-      <rect x="100" y="400" width="80" height="200" fill="#ffffff22"/>
-      <rect x="220" y="350" width="100" height="250" fill="#ffffff33"/>
-      <rect x="400" y="300" width="120" height="300" fill="#ffffff22"/>
-      <rect x="560" y="370" width="90" height="230" fill="#ffffff33"/>
-      <rect x="700" y="320" width="100" height="280" fill="#ffffff22"/>
-      <!-- Ground -->
-      <rect y="580" width="1440" height="20" fill="#5c1212"/>
-    </svg>
   </div>
+</section>
 
+<!-- =====================================================
+ TEAM & LOCATION
+===================================================== -->
+<section id="team" class="py-20 bg-white">
+  <div class="container mx-auto px-4 max-w-7xl">
+    <h2 class="text-3xl font-bold text-center text-secondary mb-12">
+      {% trans "Our Team & Office Location" %}
+    </h2>
 
-  <!-- Optional overlay for readability -->
-  <div class="absolute inset-0 bg-black bg-opacity-50 m-0 p-0">
-    <img src="{% static 'images/smart-city.webp' %}" alt="Quality Infrastructure" class="w-full h-full object-cover opacity-50">
-  </div>
-
-  <!-- Content -->
-  <div class="container mx-auto px-4 text-center relative z-10">
-    
-    <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Start Your Next Project?</h2>
-    <p class="text-xl mb-8 max-w-2xl mx-auto">Connect with Adyam Engineering today for a consultation and discover how we can transform your ideas into reality.</p>
-
-    <button
-      type="button"
-      class="inline-flex bg-transparent border-2  px-8 py-4 rounded-lg font-semibold hover:bg-gray-200 hover:text-blue-600 transition duration-300 text-lg"
-      onclick="document.getElementById('contactModal').classList.remove('hidden')"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary mr-2" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zM4 20c0-2.5 4.5-4 8-4s8 1.5 8 4v2H4v-2z"/>
-        <path d="M13 13h-2l-1 2 2 4 2-4z"/>
-      </svg>
-      Contact Our Experts
-    </button>
-  </div>
-
-    <!-- Contact Modal -->
-    <div id="contactModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
-        <div class="bg-white rounded-lg shadow-lg w-full max-w-lg p-8 relative">
-            <button
-                class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl"
-                onclick="document.getElementById('contactModal').classList.add('hidden')"
-                aria-label="Close"
-            >&times;</button>
-            <h3 class="text-2xl font-bold mb-4 text-primary">Contact Us</h3>
-            <form method="post" action="{% url 'core:contact-us' %}">
-                {% csrf_token %}
-                <div class="mb-4">
-                    <label for="name" class="block text-gray-700 mb-2">Name</label>
-                    <input type="text" id="name" name="name" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
-                </div>
-                <div class="mb-4">
-                    <label for="phone" class="block text-gray-700 mb-2">Phone Number</label>
-                    <input type="phone" id="phone" name="phone" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
-                </div>
-                <div class="mb-4">
-                    <label for="email" class="block text-gray-700 mb-2">Email</label>
-                    <input type="email" id="email" name="email" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
-                </div>
-                <div class="mb-4">
-                    <label for="message" class="block text-gray-700 mb-2">Message</label>
-                    <textarea id="message" name="message" rows="4" required class="w-full border border-gray-300 rounded px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
-                </div>
-                <button type="submit" class="bg-primary text-white px-6 py-2 rounded font-semibold hover:bg-secondary transition duration-300">
-                    Send Message
-                </button>
-            </form>
-        </div>
+    <div class="grid md:grid-cols-2 gap-12">
+      {% include "core/team_grid.html" %}
+      {% include "core/location_map.html" %}
     </div>
-  </section>
+  </div>
+</section>
 
-  
-  <section>
-    <div class="z-20 fixed bottom-20 right-0">
-        
-      <a href="tel:+251{{contacts.phone}}" class="flex">
-      <button id="contact" class="bg-blue-500 hover:bg-blue-600 text-white rounded-full p-4 shadow-lg  animate-ring hover:animate-none">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-        </svg>
+<!-- =====================================================
+ CALL TO ACTION
+===================================================== -->
+{% include "core/cta_contact.html" %}
 
-      </button>
-        <span class="text-md" >{{contacts.phone}} </span>
-
-    </a>
-
-    <div>
-    <style>
-      @keyframes ring {
-        0% { transform: rotate(0deg); }
-        10% { transform: rotate(-10deg); }
-        20% { transform: rotate(10deg); }
-        30% { transform: rotate(-10deg); }
-        40% { transform: rotate(10deg); }
-        50% { transform: rotate(0deg); }
-        100% { transform: rotate(0deg); }
-      }
-      .animate-ring {
-        animation: ring 2s infinite;
-      }
-    </style>
-    <script> 
-      const contact = document.getElementById('contact');
-    </script>
-  </section>
-    
-  </main>
-
-  {% endblock %}
-
-  {% block footer %}
-    {% include 'core/footer.html' %}
-  {% endblock %}
-
-  <script src="{% static 'js/navbar.js' %}"></script>
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-
-  {% block extra_js %}{% endblock %}
-  
-</body>
-</html>
+{% endblock %}

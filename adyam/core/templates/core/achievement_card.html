@@ -1,0 +1,29 @@
+{% load static %}
+{% load i18n %}
+
+<div class="bg-gray-50 rounded-xl shadow-md p-8 flex flex-col items-center hover:shadow-lg transition duration-300">
+  
+  <!-- Icon -->
+  <div class="mb-4">
+    <img
+      src="{% static 'icons/'|add:icon %}"
+      alt="{{ label }}"
+      class="w-12 h-12"
+      loading="lazy"
+    >
+  </div>
+
+  <!-- Counter -->
+  <div
+    class="text-4xl font-bold text-secondary counter"
+    data-target="{{ value }}"
+  >
+    0
+  </div>
+
+  <!-- Label -->
+  <p class="mt-2 text-gray-600 text-lg text-center">
+    {% trans label %}
+  </p>
+
+</div>

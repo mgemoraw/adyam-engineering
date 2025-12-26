@@ -1,0 +1,23 @@
+{% load static %}
+{% load i18n %}
+
+<div class="bg-secondary text-white text-sm">
+  <div class="container mx-auto px-4 py-2 flex flex-col sm:flex-row justify-between items-center gap-2">
+
+    <!-- Left: Contact Info -->
+    <div class="flex items-center gap-4">
+      <a href="tel:+251{{ contacts.phone }}" class="hover:underline flex items-center gap-1">
+        📞 +251 {{ contacts.phone }}
+      </a>
+      <a href="mailto:{{ contacts.email }}" class="hover:underline flex items-center gap-1">
+        ✉ {{ contacts.email }}
+      </a>
+    </div>
+
+    <!-- Right: Address -->
+    <div class="text-center sm:text-right">
+      📍 {% trans "Bahir Dar, Kebele 14 – 40 Meter Road" %}
+    </div>
+
+  </div>
+</div>

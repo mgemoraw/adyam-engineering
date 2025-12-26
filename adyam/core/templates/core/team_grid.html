@@ -1,0 +1,58 @@
+{% load static %}
+{% load i18n %}
+
+<div>
+  <h3 class="text-2xl font-bold text-secondary mb-6 text-center md:text-left">
+    {% trans "Our Team Members" %}
+  </h3>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+    {% for team_member in teams %}
+      <article
+        class="bg-white rounded-xl shadow-md p-8 flex flex-col items-center text-center
+               hover:shadow-xl transition duration-300 border border-gray-100"
+      >
+        <!-- Profile Image -->
+        <div class="w-32 h-32 mb-4 rounded-full overflow-hidden border-4 border-primary shadow">
+          <img
+            src="{{ team_member.image.url }}"
+            alt="{{ team_member.name }}"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          >
+        </div>
+
+        <!-- Name & Role -->
+        <h4 class="text-lg font-bold text-secondary">{{ team_member.name }}</h4>
+        <p class="text-primary font-semibold">{{ team_member.position }}</p>
+
+        <!-- Bio -->
+        {% if team_member.bio %}
+          <p class="text-gray-500 text-sm mt-3">
+            {{ team_member.bio|truncatewords:20 }}
+          </p>
+        {% endif %}
+
+        <!-- LinkedIn -->
+        {% if team_member.linkedin %}
+          <a
+            href="{{ team_member.linkedin }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-4 inline-flex items-center text-blue-700 hover:text-blue-900 transition"
+            aria-label="LinkedIn profile of {{ team_member.name }}"
+          >
+            <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.29c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76 1.75.79 1.75 1.76-.78 1.76-1.75 1.76zm13.5 10.29h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.17-1.73 2.39v4.58h-3v-9h2.89v1.23h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.59v4.74z"/>
+            </svg>
+            LinkedIn
+          </a>
+        {% endif %}
+      </article>
+    {% empty %}
+      <p class="text-gray-500 col-span-full text-center">
+        {% trans "No team members available at the moment." %}
+      </p>
+    {% endfor %}
+  </div>
+</div>

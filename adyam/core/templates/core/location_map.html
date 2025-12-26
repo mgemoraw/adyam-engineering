@@ -1,0 +1,59 @@
+{% load static %}
+{% load i18n %}
+
+<div>
+  <h3 class="text-2xl font-bold text-secondary mb-6 text-center md:text-left">
+    {% trans "Our Office Location" %}
+  </h3>
+
+  <div class="bg-gray-50 rounded-xl shadow-md p-6 border border-gray-100">
+    
+    <p class="text-center text-primary font-semibold mb-3">
+      {% trans "Bahir Dar, Kebele 14 – 40 Meter Road, D.A. Building G23" %}
+    </p>
+
+    <!-- Map -->
+    <div
+      id="map"
+      class="h-[320px] w-full rounded-lg shadow"
+      aria-label="Office location map"
+    ></div>
+
+    <!-- Google Maps Link -->
+    <div class="text-center mt-4">
+      <a
+        href="https://www.google.com/maps/search/?api=1&query={{ latitude|default:'11.593475' }},{{ longitude|default:'37.389395' }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-primary font-semibold hover:underline"
+      >
+        {% trans "View on Google Maps" %}
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Leaflet -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+/>
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const lat = {{ latitude|default:"11.593475" }};
+  const lng = {{ longitude|default:"37.389395" }};
+
+  const map = L.map("map").setView([lat, lng], 16);
+
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "&copy; OpenStreetMap contributors",
+  }).addTo(map);
+
+  L.marker([lat, lng])
+    .addTo(map)
+    .bindPopup("Adyam Engineering S.C.")
+    .openPopup();
+});
+</script>
