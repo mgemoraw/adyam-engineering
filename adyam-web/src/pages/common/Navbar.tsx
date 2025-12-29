@@ -234,7 +234,13 @@ const Navbar = () => {
                 {t("navbar.home")}
               </NavLink>
             )}
-            <Disclosure>
+
+            <NavLink to="/services" className={getNavLinkClass}>
+              <FcServices className="h-7 w-7" />
+              {t("navbar.services")}
+            </NavLink>
+
+            {/* <Disclosure>
               {({ open }) => (
                 <>
                   <DisclosureButton className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-base font-semibold text-gray-900  hover:bg-gray-100 hover:border hover:border-b-blue-700">
@@ -248,6 +254,7 @@ const Navbar = () => {
                       }`}
                     />
                   </DisclosureButton>
+                  
                   <DisclosurePanel className="pl-6">
                     {services.map((item) => (
                       <NavLink
@@ -261,7 +268,7 @@ const Navbar = () => {
                   </DisclosurePanel>
                 </>
               )}
-            </Disclosure>
+            </Disclosure> */}
             <NavLink
               to="/projects"
               className="block rounded-lg px-3 py-2 text-base font-semibold text-gray-900  hover:bg-gray-100 hover:border hover:border-b-blue-700"

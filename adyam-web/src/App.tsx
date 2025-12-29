@@ -1,56 +1,49 @@
-import React from 'react';
-import './App.css'
-import { AuthProvider } from './hooks/useAuth'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Login from './pages/manager/Login'
-import ThemeProvider from './hooks/useTheme';
-import Layout from './pages/Layout';
-import i18n from './language/i18n';
-import HomePage from './pages/common/HomePage';
-import { FileUpload } from './components/FileUploads';
-import TestPage from './pages/testPages/ToDo';
-import AboutPage from './pages/common/AboutPage';
-import ServicesPage from './pages/common/ServicesPage';
-
+import React from "react";
+import "./App.css";
+import { AuthProvider } from "./hooks/useAuth";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from "./pages/manager/Login";
+import ThemeProvider from "./hooks/useTheme";
+import Layout from "./pages/Layout";
+import i18n from "./language/i18n";
+import HomePage from "./pages/common/HomePage";
+import { FileUpload } from "./components/FileUploads";
+import TestPage from "./pages/testPages/ToDo";
+import AboutPage from "./pages/common/AboutPage";
+import ServicesPage from "./pages/common/ServicesPage";
+import ServiceDetailPage from "./pages/common/serviceDetailPage";
 
 function App() {
-
   return (
     <AuthProvider>
       <ThemeProvider>
-        <BrowserRouter
-        basename="/"
-        >
-       
-        <Routes >
-          
-          <Route path="/" element={<Layout/>}>
-            <Route index element={<HomePage/>} />
-            <Route path="/login" element={<Login/>} />
-            <Route path="/dashboard" element={<div>Dashboard Page</div>} />
-            <Route path="/about" element={<AboutPage/>} />
-            <Route path="/services" element={<ServicesPage/>} />
-            <Route path="/projects" element={<TestPage/>} />
-            <Route path="/blog" element={<div>Dashboard Page</div>} />
-            <Route path="/contact" element={<div>Dashboard Page</div>} />
-            <Route path="/upload" element={<FileUpload/>} />
-          </Route>
-         
+        <BrowserRouter basename="/">
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<HomePage />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/dashboard" element={<div>Dashboard Page</div>} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/services/:slug" element={<ServiceDetailPage />} />
 
-        </Routes>
-          
-      </BrowserRouter>
+              <Route path="/projects" element={<TestPage />} />
+              <Route path="/blog" element={<div>Dashboard Page</div>} />
+              <Route path="/contact" element={<div>Dashboard Page</div>} />
+              <Route path="/upload" element={<FileUpload />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
       </ThemeProvider>
-      
     </AuthProvider>
   );
 }
 
-export default App
-
+export default App;
 
 //  <div className="App">
-{/*
+{
+  /*
    <a href="https://vitejs.dev" target="_blank">
   <img src={viteLogo} className="logo" alt="Vite logo" />
 </a>
@@ -70,4 +63,5 @@ export default App
   Click on the Vite and React logos to learn more
 </p>
 </div>
- */}
+ */
+}

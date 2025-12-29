@@ -1,4 +1,3 @@
-
 {
   "signIn": {
     "title": "Sign In",
@@ -26,22 +25,80 @@
     "adminDashboard": "Admin Dashboard",
     "companyName": "Adyam Engineering S.C."
   },
-   "services": {
+  "services": {
     "structural": "Structural Engineering",
+    "structuralDesc": "Provision of safe, efficient, and code-compliant structural solutions for buildings and infrastructure, ensuring strength, stability, and durability throughout the project lifecycle.",
+
     "projectManagement": "Project Management",
-    "projectManagementDesc": "Project Management,",
+    "projectManagementDesc": "End-to-end planning, coordination, and control of projects to ensure timely delivery, cost efficiency, quality assurance, and compliance with contractual requirements.",
+
     "supervision": "Construction Supervision",
+    "supervisionDesc": "On-site technical oversight to ensure construction activities meet design specifications, quality standards, safety regulations, and approved schedules.",
+
     "feasibility": "Feasibility Studies",
+    "feasibilityDesc": "Comprehensive technical, financial, economic, and environmental assessments to determine project viability and inform sound investment decisions.",
+
     "feasibilityStudies": "Project Feasibility Studies",
-    "feasibilityStudiesDesc": "Project Feasibility Studies",
+    "feasibilityStudiesDesc": "Detailed evaluation of proposed projects, including risk analysis, cost estimation, and implementation strategies to support informed decision-making.",
+
     "urbanPlanning": "Urban Planning",
-    "urbanPlanningDesc": "Urban Planning",
+    "urbanPlanningDesc": "Strategic planning and design of urban spaces to promote sustainable development, efficient land use, mobility, and improved quality of life.",
+
     "quantitySurveying": "Quantity Surveying",
-    "quantitySurveyingDesc": "Quantity Surveying",
+    "quantitySurveyingDesc": "Cost planning, estimation, and financial control services to optimize project budgets, manage variations, and ensure value for money.",
+
     "structuralDesign": "Structural Design",
-    "structuralDesignDesc": "Structural Design",
+    "structuralDesignDesc": "Development of detailed structural designs and drawings that comply with applicable codes and standards while optimizing material use and constructability.",
+
     "constructionSupervision": "Construction Supervision",
-    "constructionSupervisionDesc": "Construction Supervision"
+    "constructionSupervisionDesc": "Professional supervision services ensuring construction works are executed in accordance with approved designs, specifications, contracts, and safety requirements.",
+    "roadAndBridgeDesign": "Road & Bridge Design",
+    "roadAndBridgeDesignDesc": "Planning and design of roads, highways, and bridge structures, incorporating geometric design, pavement engineering, structural integrity, safety standards, and sustainable transport principles.",
+    "trainingServices": "Engineering Software Training",
+    "trainingServicesDesc": "Professional training programs on industry-standard engineering and design software, aimed at enhancing practical skills, productivity, and technical competence for students and professionals.",
+
+    "trainingSoftwareList": [
+      "AutoCAD",
+      "Civil 3D",
+      "Revit",
+      "ArchiCAD",
+      "GIS",
+      "MATLAB",
+      "ETABS",
+      "SAP2000",
+      "STAAD.Pro",
+      "SAFE",
+      "PLAXIS",
+      "MS Project",
+      "Microsoft Excel for Engineering Applications",
+      "Primavera P6",
+      "Tekla Structures",
+      "SketchUp",
+      "Lumion",
+      "and other specialized engineering software"
+    ],
+    "trainingDescription": "Our training services are designed to equip students and professionals with the necessary skills to effectively utilize industry-standard engineering and design software. We offer comprehensive training programs that cover a wide range of software applications commonly used in civil engineering, structural engineering, project management, and construction supervision. Our experienced instructors provide hands-on training, practical exercises, and real-world examples to ensure that participants gain a deep understanding of the software's capabilities and applications. Whether you are a student looking to enhance your technical skills or a professional seeking to stay updated with the latest software tools, our training services are tailored to meet your needs and help you succeed in your career.",
+
+    "programmingLanguages": "Programming Languages & Tools",
+    "programmingLanguagesDesc": "We offer training in various programming languages and tools that are essential for modern engineering practices. Our courses cover languages such as Python, MATLAB, R, and others, providing participants with the skills needed to automate tasks, analyze data, and develop custom engineering solutions. Our training programs are designed to be practical and hands-on, allowing participants to apply their knowledge to real-world engineering challenges. Whether you are a student looking to enhance your programming skills or a professional seeking to improve your technical capabilities, our training services are tailored to meet your needs and help you succeed in your career.",
+    "programmingLanguagesList": [
+      "Python",
+      "MATLAB",
+      "R",
+      "JavaScript",
+      "C/C++",
+      "Java",
+      "SQL",
+      "Git & GitHub",
+      "Visual Basic for Applications (VBA)",
+      "Visual Basic .NET",
+      "C#",
+      "Django",
+      "Flask",
+      "React",
+      "Node.js",
+      "and other relevant programming languages and tools"
+    ]
   },
   "navigation": {
     "home": "Home",
@@ -74,31 +131,31 @@
 
     "features": [
       {
-        "feature": "Expertise and Experience", 
-        "description": "Our team consists of highly skilled professionals with extensive experience getInTouch in the engineering field. We bring a wealth of knowledge and expertise to every project, ensuring that we deliver the best possible results for our clients."},
-      {
-        "feature": "Innovation and Technology",  
-        "description":  "We are committed to staying at the forefront of engineering technology and methodologies. Our innovative approach allows us to tackle complex challenges and deliver cutting-edge solutions that meet the evolving needs of our clients."
+        "feature": "Expertise and Experience",
+        "description": "Our team consists of highly skilled professionals with extensive experience getInTouch in the engineering field. We bring a wealth of knowledge and expertise to every project, ensuring that we deliver the best possible results for our clients."
       },
       {
-        "feature": "Service Quality ",  
-        "description":   "Quality is at the heart of everything we do. We adhere to the highest standards of quality assurance and control, ensuring that every project we undertake meets or exceeds industry standards and client expectations."
+        "feature": "Innovation and Technology",
+        "description": "We are committed to staying at the forefront of engineering technology and methodologies. Our innovative approach allows us to tackle complex challenges and deliver cutting-edge solutions that meet the evolving needs of our clients."
       },
       {
-        "feature": "Sustainability",  
-        "description":   "We are dedicated to promoting sustainable practices in all our projects. Our focus on sustainability ensures that we minimize environmental impact while delivering efficient and effective engineering solutions."
+        "feature": "Service Quality ",
+        "description": "Quality is at the heart of everything we do. We adhere to the highest standards of quality assurance and control, ensuring that every project we undertake meets or exceeds industry standards and client expectations."
       },
-       {
-        "feature": "Client-Centric Approach",  
-        "description":   "Our clients are at the center of everything we do. We take the time to understand your unique needs and challenges, providing personalized service and support throughout the project lifecycle. Our goal is to build lasting relationships based on trust and mutual success."
+      {
+        "feature": "Sustainability",
+        "description": "We are dedicated to promoting sustainable practices in all our projects. Our focus on sustainability ensures that we minimize environmental impact while delivering efficient and effective engineering solutions."
+      },
+      {
+        "feature": "Client-Centric Approach",
+        "description": "Our clients are at the center of everything we do. We take the time to understand your unique needs and challenges, providing personalized service and support throughout the project lifecycle. Our goal is to build lasting relationships based on trust and mutual success."
       }
-
     ],
 
     "aboutFeature1": "Expertise and Experience",
     "aboutFeature1Desc": "Our team consists of highly skilled professionals with extensive experience getInTouch in the engineering field. We bring a wealth of knowledge and expertise to every project, ensuring that we deliver the best possible results for our clients.",
 
-    "aboutFeature2": "Innovation and Technology",  
+    "aboutFeature2": "Innovation and Technology",
     "aboutFeature2Desc": "We are committed to staying at the forefront of engineering technology and methodologies. Our innovative approach allows us to tackle complex challenges and deliver cutting-edge solutions that meet the evolving needs of our clients.",
 
     "aboutFeature3": "Service Quality ",
@@ -118,22 +175,23 @@
     "ourProcess": "Our Process",
     "processSubtitle": "How We Work",
     "processStep1": "Initial Consultation & Needs Assessment",
-    "processStep1Desc": "This is where we get to know you and your project. We'll discuss your vision, objectives, challenges, and initial requirements to understand the full scope of your needs. Our goal is to gain a clear picture of how we can best support your success.", 
-    
+    "processStep1Desc": "This is where we get to know you and your project. We'll discuss your vision, objectives, challenges, and initial requirements to understand the full scope of your needs. Our goal is to gain a clear picture of how we can best support your success.",
+
     "processStep2": "Strategic Planning & Proposal Development",
     "processStep2Desc": "Based on our consultation, our experts will develop a tailored strategy outlining the recommended approach, scope of work, key deliverables, and a detailed timeline. You'll receive a comprehensive proposal that clearly articulates our proposed solutions and the value we bring to your project.",
-    
+
     "processStep3": "Project Execution & Collaborative Design",
     "processStep3Desc": "Once the proposal is approved, our team springs into action. We'll meticulously execute the project, maintaining open communication and collaboration with you at every stage. We leverage our expertise and cutting-edge tools to deliver high-quality designs, analyses, and reports.",
-    
+
     "processStep4": "Final Delivery & Ongoing Support",
     "processStep4Desc": "Upon successful completion, we'll deliver all final project documentation and deliverables. But our commitment doesn't end there; we're available for ongoing support, clarifications, and any future needs, ensuring your project continues to thrive long after our initial engagement.",
     "readyToStart": "Ready to Build the Future??",
     "ctaSubtitle": "Let's discuss how our expertise can bring your next civil engineering project to life.!",
     "getReadyDesc": "At Adyam Engineering, we are ready to help you building your future. Whether you are planning a new construction project or need expert consultancy services, our team is here to assist you every step of the way.",
-    "getFreeConsultation": "Get Free Consultation"
+    "getFreeConsultation": "Get Free Consultation",
+    "requestConsultation": "Request Consultation"
   },
-  
+
   "stats": {
     "projectsCompleted": "Projects Completed",
     "clientsServed": "Clients Served",
@@ -144,7 +202,7 @@
     "title": "Projects",
     "subtitle": "Our past projects"
   },
-  
+
   "testimonials": {
     "title": "What Our Clients Say",
     "subtitle": "Hear from our satisfied clients about their experience working with us",
@@ -190,6 +248,3 @@
     }
   }
 }
-  
-
-
