@@ -1,26 +1,35 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { NewspaperIcon } from '@heroicons/react/24/outline';
-import './NewsSlider.css'; // you'll create this for styling
+import React from "react";
+import { Link } from "react-router-dom";
+import { NewspaperIcon } from "@heroicons/react/24/outline";
+import "./NewsSlider.css"; // you'll create this for styling
 
 const dummyNews = [
   {
     id: 1,
-    title: 'Adyam Launches New Urban Planning Division',
-    summary: 'Expanding our expertise to better serve growing metropolitan areas.',
-    link: '/news/urban-planning-launch',
+    title: "Adyam Launches New Urban Planning Division",
+    summary:
+      "Expanding our expertise to better serve growing metropolitan areas.",
+    link: "/news/urban-planning-launch",
   },
   {
     id: 2,
-    title: '2025 Structural Innovations Conference Highlights',
-    summary: 'Key insights and innovations presented by our engineering team.',
-    link: '/news/structural-conference-2025',
+    title: "2025 Structural Innovations Conference Highlights",
+    summary: "Key insights and innovations presented by our engineering team.",
+    link: "/news/structural-conference-2025",
   },
   {
     id: 3,
-    title: 'Project X Completed Ahead of Schedule',
-    summary: 'Our commitment to deadlines leads to early delivery for a major client.',
-    link: '/news/project-x-completion',
+    title: "Project X Completed Ahead of Schedule",
+    summary:
+      "Our commitment to deadlines leads to early delivery for a major client.",
+    link: "/news/project-x-completion",
+  },
+  {
+    id: 4,
+    title: "Project X Completed Ahead of Schedule",
+    summary:
+      "Our commitment to deadlines leads to early delivery for a major client.",
+    link: "/news/project-x-completion",
   },
 ];
 
