@@ -1,0 +1,6 @@
+@import 'tailwindcss';
+
+/* OR if you need more control: */
+/* @tailwind utilities; */
+
+/* Your custom CSS */
