@@ -16,6 +16,11 @@ export const servicesData = {
       "Technical specifications",
       "Construction support",
     ],
+    hero: {
+      image: "/images/hero/structural.jpg",
+      overlay: "from-black/70 via-black/50 to-black/80",
+      theme: "indigo",
+    },
   },
 
   "road-and-bridge-design": {
@@ -41,6 +46,11 @@ export const servicesData = {
       "Bill of quantities",
       "Technical specifications",
     ],
+    hero: {
+      image: "/images/hero/road-bridge.jpg",
+      overlay: "from-black/60 via-black/40 to-black/70",
+      theme: "emerald",
+    },
   },
 
   "project-management": {
@@ -59,5 +69,10 @@ export const servicesData = {
       "Progress reports",
       "Cost & schedule control",
     ],
+    hero: {
+      image: "/images/hero/project-management.jpg",
+      overlay: "from-black/65 via-black/45 to-black/75",
+      theme: "blue",
+    },
   },
 };

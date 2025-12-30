@@ -1,0 +1,101 @@
+/* animatedHero.module.css */
+.animatedHero {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #071638 0%, #0b2a4a 60%);
+}
+
+.centerContent {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  padding: 12px 20px;
+  max-width: 920px;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(28px, 4.2vw, 48px);
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-shadow: 0 6px 24px rgba(11, 22, 42, 0.6);
+}
+
+.subtitle {
+  margin-top: 12px;
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: clamp(14px, 1.4vw, 18px);
+  opacity: 0.95;
+}
+
+/* Keyframes */
+@keyframes floatY {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-18px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: translateX(0);
+    stroke-dashoffset: 0;
+  }
+  100% {
+    transform: translateX(-60px);
+    stroke-dashoffset: -60;
+  }
+}
+
+@keyframes orbit1 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit2 {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes swell {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Make sure SVG transforms behave as expected */
+.float-1,
+.float-2,
+.float-3 {
+  will-change: transform;
+}
+
+/* Responsive tweaks */
+@media (max-width: 640px) {
+  .float-2 {
+    display: none;
+  }
+}

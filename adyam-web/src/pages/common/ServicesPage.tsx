@@ -86,6 +86,46 @@ const ServicesPage: React.FC = () => {
           </h1>
           <p className="text-lg text-gray-600">{t("home.servicesSubtitle")}</p>
         </div>
+        {/* Decorative animated gears (vector) */}
+        <div className="relative -mt-40 pointer-events-none" aria-hidden="true">
+          <div className="absolute inset-0">
+            {/* Large left gear */}
+            <svg
+              viewBox="0 0 100 100"
+              className="absolute left-8 top-4 w-48 h-48 text-indigo-100 opacity-90 filter drop-shadow-lg"
+              style={{ animation: "spin 20s linear infinite" }}
+              fill="currentColor"
+              role="img"
+              aria-hidden="true"
+            >
+              <path d="M50 30a20 20 0 1 0 0 40 20 20 0 0 0 0-40zm0-10c3 0 6 0 9 1l4-8 7 2-2 8c3 2 6 4 7 7l8-2 2 7-8 4c0 3 1 6 1 9s0 6-1 9l8 4-2 7-8-2c-2 3-4 6-7 7l2 8-7 2-4-8c-3 1-6 1-9 1s-6 0-9-1l-4 8-7-2 2-8c-3-2-6-4-7-7l-8 2-2-7 8-4c0-3-1-6-1-9s0-6 1-9l-8-4 2-7 8 2c2-3 4-6 7-7l-2-8 7-2 4 8c3-1 6-1 9-1z" />
+            </svg>
+
+            {/* Small right gear (reverse, faster) */}
+            <svg
+              viewBox="0 0 100 100"
+              className="absolute right-12 top-20 w-28 h-28 text-indigo-200 opacity-95 filter drop-shadow-md"
+              style={{ animation: "spin 8s linear infinite reverse" }}
+              fill="currentColor"
+              role="img"
+              aria-hidden="true"
+            >
+              <path d="M50 34a16 16 0 1 0 0 32 16 16 0 0 0 0-32zm0-8c2.5 0 5 0 7 1l3-6 6 2-1.5 6c2 1.5 4 3 5 5.5l6-1 1.5 5.5-6 3c0 2 0.8 4 0.8 6s0 4-0.8 6l6 3-1.5 5.5-6-1c-1 2-2.5 4-4.5 5l1 6-6 2.5-3-6.5c-2 0.8-4 1-6 1s-4-0.2-6-1l-3 6.5-6-2.5 1-6c-2-1-3.5-3-4.5-5l-6 1-1.5-5.5 6-3c-0.8-2-0.8-4-0.8-6s0-4 0.8-6l-6-3 1.5-5.5 6 1c1-2 2.5-4 4.5-5l-1-6 6-2.5 3 6.5c2-0.8 3.5-1 6-1z" />
+            </svg>
+
+            {/* Tiny accent gear */}
+            <svg
+              viewBox="0 0 100 100"
+              className="absolute right-40 top-6 w-16 h-16 text-indigo-50 opacity-80"
+              style={{ animation: "spin 12s linear infinite" }}
+              fill="currentColor"
+              role="img"
+              aria-hidden="true"
+            >
+              <path d="M50 40a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0-6c1.8 0 3.6 0 5 1l2-4 4 1-1 4c1.2 1 2.4 2 3 3.5l4-1 1 3-4 2c0 1 0.4 2 0.4 3s0 2-0.4 3l4 2-1 3-4-1c-0.8 1-1.6 2-3 3l1 4-4 1-2-4c-1 0.4-2 0.6-3 0.6s-2-0.2-3-0.6l-2 4-4-1 1-4c-1.4-1-2.2-2-3-3l-4 1-1-3 4-2c-0.4-1-0.4-2-0.4-3s0-2 0.4-3l-4-2 1-3 4 1c0.8-1 1.6-2 3-3l-1-4 4-1 2 4c1.4-1 3.2-1 5-1z" />
+            </svg>
+          </div>
+        </div>
       </section>
 
       {/* Services Grid */}
